@@ -1,0 +1,13 @@
+{
+    // Cursor fix: file open hone par end pe na jaaye
+    "workbench.editor.restoreViewState": false,
+
+    // Word wrap enable karo taaki long lines scroll na karen
+    "editor.wordWrap": "on",
+
+    // Cursor ke aas-paas extra scrolling na ho
+    "editor.cursorSurroundingLines": 0,
+    
+    // Optional: auto-formatting ke baad cursor move na kare
+    "editor.formatOnSave": false
+}
