@@ -6,7 +6,6 @@ import Link from "next/link"
 import { useState, useMemo } from "react"
 
 // --- Product Data ---
-// Note: Price is now a number (no $ sign) which is required for correct numerical sorting.
 const products = [
   {
     id: 1,
@@ -37,59 +36,50 @@ const products = [
   },
   {
     id: 4,
-    name: "Creatine Monohydrate",
-    category: "Performance",
-    description: "Micronized for enhanced solubility and absorption",
-    image: "/magnesium-capsules-transparent.png",
-    price: 42,
-    popularity: 95,
+    name: "Probiotic Complex",
+    category: "Gut Health",
+    description: "Multi-strain formula for balanced digestive and immune support",
+    image: "/omega-3-capsules-transparent.png",
+    price: 55,
+    popularity: 90,
   },
   {
     id: 5,
-    name: "Zinc Picolinate",
-    category: "Immune Support",
-    description: "Superior absorption form for immune function",
-    image: "/omega-3-capsules-transparent.png",
-    price: 28,
-    popularity: 60,
+    name: "Creatine Monohydrate",
+    category: "Performance",
+    description: "Micronized powder for strength, power, and muscle growth",
+    image: "/magnesium-capsules-transparent.png",
+    price: 25,
+    popularity: 95,
   },
   {
     id: 6,
-    name: "B-Complex Elite",
-    category: "Energy & Metabolism",
-    description: "Methylated B vitamins for optimal bioavailability",
+    name: "B-Complex Ultra",
+    category: "Energy & Stress",
+    description: "Active B vitamins for cellular energy and neurological function",
     image: "/vitamin-d3-k2-supplement-bottle-on-black.png",
     price: 38,
     popularity: 75,
   },
 ]
 
-// The `allCategories` constant is removed as it is no longer used.
-
 export default function ShopPage() {
   const [searchTerm, setSearchTerm] = useState("")
-  // The `activeCategory` state is removed.
   const [sortOption, setSortOption] = useState("default")
 
-  // Use useMemo to filter + search + sort products efficiently
+  // Filtering + sorting logic
   const filteredProducts = useMemo(() => {
-    // Start with a filtered list based on the search term.
-    let currentProducts = products.filter(
-        (product) => {
-            if (searchTerm.trim() === "") return true; // Show all if search is empty
+    let currentProducts = products.filter((product) => {
+      if (searchTerm.trim() === "") return true
+      const lowerCaseSearch = searchTerm.toLowerCase()
+      return (
+        product.name.toLowerCase().includes(lowerCaseSearch) ||
+        product.description.toLowerCase().includes(lowerCaseSearch)
+      )
+    })
 
-            const lowerCaseSearch = searchTerm.toLowerCase();
-            return (
-                product.name.toLowerCase().includes(lowerCaseSearch) ||
-                product.description.toLowerCase().includes(lowerCaseSearch)
-            );
-        }
-    );
-    
-    // Create a mutable copy for sorting
-    let sortedProducts = [...currentProducts];
+    let sortedProducts = [...currentProducts]
 
-    // 2. Sorting Logic
     if (sortOption === "low-high") {
       sortedProducts.sort((a, b) => a.price - b.price)
     } else if (sortOption === "high-low") {
@@ -97,10 +87,9 @@ export default function ShopPage() {
     } else if (sortOption === "popular") {
       sortedProducts.sort((a, b) => b.popularity - a.popularity)
     }
-    // "default" will maintain the order from the search filter.
 
     return sortedProducts
-  }, [searchTerm, sortOption]) // Dependencies updated
+  }, [searchTerm, sortOption])
 
   return (
     <main className="min-h-screen bg-black">
@@ -122,18 +111,18 @@ export default function ShopPage() {
             </p>
           </div>
 
-          {/* --- Filter, Search & Sort Section (Updated) --- */}
-          {/* Alignment changed to put search on the left and sort on the right for a cleaner look */}
+          {/* Search + Sort */}
           <div className="flex flex-col md:flex-row gap-6 mb-16 md:justify-between">
-            
-            {/* Search Input (Now aligned left, taking primary focus on mobile) */}
+            {/* Search */}
             <div className="relative w-full md:w-auto md:min-w-[300px] order-1">
               <input
                 type="text"
                 placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full py-3 pl-12 pr-4 text-white bg-zinc-900 rounded-lg focus:ring-2 focus:ring-white/50 focus:outline-none transition-colors border border-transparent hover:border-zinc-700"
+                // **UPDATED STYLING:** Removed border and hover border, used darker bg-zinc-900 for input field,
+                // and a subtle focus ring for a professional look.
+                className="w-full py-3 pl-12 pr-4 text-white bg-zinc-900 rounded-md focus:ring-1 focus:ring-white/70 focus:outline-none transition-colors"
               />
               <svg
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50"
@@ -141,16 +130,23 @@ export default function ShopPage() {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
               </svg>
             </div>
-            
-            {/* Sort Dropdown (Now aligned right, placed second) */}
+
+            {/* Sort */}
             <div className="relative w-full md:w-auto md:min-w-[200px] order-2">
               <select
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
-                className="appearance-none w-full py-3 px-4 text-white bg-zinc-900 rounded-lg focus:ring-2 focus:ring-white/50 focus:outline-none transition-colors border border-transparent hover:border-zinc-700 cursor-pointer"
+                // **UPDATED STYLING:** Removed border and hover border, used darker bg-zinc-900,
+                // and a subtle focus ring.
+                className="appearance-none w-full py-3 px-4 text-white bg-zinc-900 rounded-md focus:ring-1 focus:ring-white/70 focus:outline-none transition-colors cursor-pointer"
               >
                 <option value="default">Sort by: Default</option>
                 <option value="low-high">Price: Low to High</option>
@@ -167,51 +163,61 @@ export default function ShopPage() {
               </svg>
             </div>
           </div>
-          {/* --- End Filter, Search & Sort Section --- */}
 
-          {/* Product Grid */}
+          {/* Product Grid (max 3 per row) */}
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {filteredProducts.map((product) => (
                 <Link
                   key={product.id}
                   href={`/product/${product.id}`}
-                  className="group block transition-all duration-300 transform hover:-translate-y-1 p-5 rounded-xl bg-zinc-950 hover:shadow-xl hover:shadow-white/5"
+                  // **UPDATED STYLING:** Removed padding, background, border, and the strong shadow/translate hover effect.
+                  // Now relies on simple vertical padding and a very subtle background change on hover for a clean, borderless look.
+                  className="group block transition-colors duration-300 rounded-lg hover:bg-zinc-950/70 p-0"
                 >
-                  <div className="relative aspect-square mb-6 overflow-hidden bg-zinc-900 rounded-lg">
+                  {/* Image Container */}
+                  <div className="relative aspect-square mb-4 overflow-hidden bg-zinc-900 rounded-md">
                     <img
                       src={product.image || "/placeholder.svg"}
                       alt={product.name}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    {/* Removed decorative overlay for simplicity */}
                   </div>
-                  
-                  {/* Category and Popularity Detail */}
-                  <div className="flex justify-between items-center mb-1">
-                    <p className="text-xs tracking-widest uppercase text-white/50">
-                      {product.category}
+
+                  {/* Product Details - Added vertical padding for spacing and cleaner look */}
+                  <div className='p-2'> 
+                    {/* Category + Popularity */}
+                    <div className="flex justify-between items-center mb-1">
+                      <p className="text-xs tracking-widest uppercase text-white/50">
+                        {product.category}
+                      </p>
+                      <p className="text-xs text-white/60">
+                        {/* Cleaned up popularity display for a professional vibe */}
+                        Pop. {product.popularity}%
+                      </p>
+                    </div>
+
+                    {/* Name */}
+                    <h3 className="text-xl font-serif mb-2 text-white group-hover:text-white/80 transition-colors">
+                      {product.name}
+                    </h3>
+
+                    {/* Description - Kept clean with text-white/70 */}
+                    <p className="text-sm text-white/70 mb-3 h-10 line-clamp-2">
+                      {product.description}
                     </p>
-                    <p className="text-xs text-white/60">
-                      Pop: {product.popularity}%
-                    </p>
+                    
+                    {/* Price - Slightly increased price text size for emphasis */}
+                    <p className="text-xl font-semibold text-white">${product.price}</p>
                   </div>
-                  
-                  <h3 className="text-xl font-serif mb-2 text-white group-hover:text-white/80 transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-white/70 mb-4 h-10 line-clamp-2">
-                    {product.description}
-                  </p>
-                  <p className="text-lg font-bold text-white">
-                    ${product.price}
-                  </p>
                 </Link>
               ))}
             </div>
           ) : (
-            <div className="text-center py-20 bg-zinc-950 rounded-xl">
-              <h2 className="text-2xl text-white/80 font-serif mb-3">No products found</h2>
+            // No Products Found - Styled for better integration
+            <div className="text-center py-20 bg-zinc-900 rounded-md">
+              <h2 className="text-2xl text-white/80 font-serif mb-3">No products found 😔</h2>
               <p className="text-white/50">Try adjusting your search term.</p>
             </div>
           )}

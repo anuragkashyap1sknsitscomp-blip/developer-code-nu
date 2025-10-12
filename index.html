@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodle LMS Strategic Investment Proposal</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        :root {
+            --primary-blue: #035397; /* Deep Blue */
+            --accent-teal: #00A896; /* Vibrant Teal for accents */
+            --light-bg: #f8f9fa; /* Off-White background */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+        .section-bg {
+            background-color: white;
+            padding: 3rem 1rem;
+        }
+        .header-bg {
+            background-color: var(--primary-blue);
+            background-image: linear-gradient(135deg, rgba(3, 83, 151, 0.95) 0%, rgba(0, 168, 150, 0.8) 100%);
+            color: white;
+        }
+        .card {
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15);
+        }
+        .highlight-professional {
+            border: 4px solid var(--accent-teal);
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 168, 150, 0.4);
+        }
+        .price-label {
+            display: none; /* Hide feature labels on desktop table */
+        }
+        
+        /* Mobile Specific: Pricing Table becomes a stacked card view */
+        @media (max-width: 767px) {
+            .price-table-wrapper {
+                overflow-x: auto;
+            }
+            .min-w-full {
+                width: 100%;
+                display: block;
+            }
+            thead {
+                display: none; /* Hide header on mobile */
+            }
+            tbody, tr, td {
+                display: block; /* Stack rows/cells */
+                width: 100%;
+            }
+            tr {
+                margin-bottom: 1.5rem;
+                border: 1px solid #ddd;
+                border-radius: 0.5rem;
+                background-color: white;
+            }
+            td {
+                text-align: right !important;
+                padding: 0.75rem 1rem;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            .price-label {
+                display: inline-block; /* Show feature labels on mobile */
+                float: left;
+                font-weight: 600;
+                color: #4b5563;
+            }
+            .highlight-professional {
+                transform: scale(1); /* Reset scale on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Header Section -->
+    <header class="header-bg py-16 md:py-24 text-center rounded-b-xl shadow-2xl">
+        <div class="max-w-6xl mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-3 leading-tight">
+                <span class="text-white">Your Future-Ready Moodle LMS.</span> <br class="hidden md:block">
+                A Strategic Investment.
+            </h1>
+            <p class="text-xl md:text-2xl font-light text-gray-200 mt-4 max-w-4xl mx-auto">
+                Engineered for maximum scale, performance, and user engagement within the Indian EdTech landscape.
+            </p>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 mb-12">
+        
+        <!-- 1. Introduction & Value Justification Card -->
+        <section id="introduction" class="mb-12">
+            <div class="card p-6 md:p-10 bg-white">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2 border-gray-200">
+                    1. Excellence Without the Cost Uncertainty
+                </h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    We understand that for a developing project, **budget predictability and long-term stability** are paramount. This proposal delivers a robust, enterprise-grade Moodle setup, ensuring our delivery standards (clean code, scalability, security) are never compromised.
+                </p>
+                <div class="mt-8 p-6 bg-teal-50 border-l-4 border-accent-teal rounded-lg">
+                    <h3 class="font-bold text-xl text-gray-800 flex items-center mb-1">
+                        <svg class="w-6 h-6 mr-3 text-accent-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.485 0-4.5 2.015-4.5 4.5S9.515 17 12 17s4.5-2.015 4.5-4.5S14.485 8 12 8zM12 6a6 6 0 100 12 6 6 0 000-12zM2 12h2M20 12h2M12 2v2M12 20v2"></path></svg>
+                        Our Fixed-Price Guarantee (₹)
+                    </h3>
+                    <p class="text-teal-900 text-sm md:text-base">
+                        Your investment is a **fixed, strategic outlay**, completely free from the ambiguity of hourly billing. We prioritize delivering superior value, ensuring the return on your ₹ investment is maximized through reliable, scalable infrastructure.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Core Value Pillars -->
+        <section id="pillars" class="mb-12">
+            <h2 class="text-center text-3xl font-bold text-gray-800 mb-8">
+                2. Key Pillars of Scalable Moodle Architecture
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card p-6 bg-white border-t-4 border-primary-blue hover:shadow-xl transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L19.5 7.25M17.25 9.5l-2.25 2.25M12 17l-5.25-5.25M4.5 17.25L9.75 12M12 4.5l5.25 5.25M9.75 4.5l-5.25 5.25"></path></svg>
+                        <h3 class="text-xl font-semibold text-primary-blue ml-3">Optimized Performance</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">We implement **Redis/Memcached caching** and fine-tune the database for 5X faster response times, crucial for peak load hours common in EdTech.</p>
+                </div>
+                <div class="card p-6 bg-white border-t-4 border-primary-blue hover:shadow-xl transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 16m-4-16l-4 16m-4-4h16"></path></svg>
+                        <h3 class="text-xl font-semibold text-primary-blue ml-3">Clean Code & Stability</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Custom development adheres strictly to Moodle's core standards, minimizing technical debt and guaranteeing seamless future upgrades and long-term stability.</p>
+                </div>
+                <div class="card p-6 bg-white border-t-4 border-primary-blue hover:shadow-xl transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.5C12 5.671 11.329 5 10.5 5S9 5.671 9 6.5v3H7v7h10v-7h-2v-3C15 5.671 14.329 5 13.5 5S12 5.671 12 6.5z"></path></svg>
+                        <h3 class="text-xl font-semibold text-primary-blue ml-3">Modern & Intuitive UX</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">A bespoke, mobile-first theme design focused on reducing cognitive load and driving learner engagement right from the dashboard.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Strategic Investment Tiers -->
+        <section id="pricing" class="mb-12 bg-white p-6 md:p-12 rounded-xl shadow-inner">
+            <h2 class="text-center text-3xl font-bold text-gray-800 mb-8">
+                3. Choose Your Strategic Investment Tier
+            </h2>
+            
+            <div class="price-table-wrapper overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-primary-blue text-white">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-medium uppercase tracking-wider rounded-tl-lg">Feature Description</th>
+                            <th class="px-6 py-4 text-center text-sm font-medium uppercase tracking-wider">Basic <br><span class="text-xs font-light">(Jumpstart)</span></th>
+                            <th class="px-6 py-4 text-center text-sm font-bold uppercase tracking-wider bg-accent-teal rounded-tr-lg">Professional <br><span class="text-xs font-light">(Optimized Growth)</span></th>
+                            <th class="px-6 py-4 text-center text-sm font-medium uppercase tracking-wider hidden md:table-cell">Enterprise <br><span class="text-xs font-light">(Max Scale)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <!-- Pricing Row -->
+                        <tr class="font-extrabold text-xl md:text-lg">
+                            <td class="px-6 py-4 text-left text-gray-900"><span class="price-label">Investment (Fixed Price)</span></td>
+                            <td class="px-6 py-4 text-center text-red-600">₹68,000</td>
+                            <td class="px-6 py-4 text-center text-accent-teal highlight-professional bg-teal-50">₹80,000</td>
+                            <td class="px-6 py-4 text-center text-gray-800 hidden md:table-cell">₹1,35,000</td>
+                        </tr>
+                        <!-- Features -->
+                        <tr class="text-sm md:text-base">
+                            <td class="px-6 py-3 text-left text-gray-700"><span class="price-label">Theme & UI/UX:</span> Custom Theme and Branding</td>
+                            <td class="px-6 py-3 text-center text-gray-500">Standard Theme (Minimal Branding)</td>
+                            <td class="px-6 py-3 text-center font-semibold text-primary-blue bg-teal-50">Bespoke Mobile-First Theme Development</td>
+                            <td class="px-6 py-3 text-center text-gray-500 hidden md:table-cell">Bespoke Theme + Custom Learning Path Flow</td>
+                        </tr>
+                        <tr class="text-sm md:text-base bg-gray-50 md:bg-white">
+                            <td class="px-6 py-3 text-left text-gray-700"><span class="price-label">Initial Load Capacity:</span> Concurrent User Cap</td>
+                            <td class="px-6 py-3 text-center text-gray-500">Up to 500</td>
+                            <td class="px-6 py-3 text-center font-semibold text-primary-blue bg-teal-50">Up to **2,500** Users (5X Performance)</td>
+                            <td class="px-6 py-3 text-center text-gray-500 hidden md:table-cell">High Volume (>5,000) & Load Balancing Prep</td>
+                        </tr>
+                        <tr class="text-sm md:text-base">
+                            <td class="px-6 py-3 text-left text-gray-700"><span class="price-label">Deployment Workflow:</span> Risk Mitigation</td>
+                            <td class="px-6 py-3 text-center text-red-500 font-medium">None (Direct Production)</td>
+                            <td class="px-6 py-3 text-center font-semibold text-primary-blue bg-teal-50">Dedicated **Staging Environment** Setup (Git)</td>
+                            <td class="px-6 py-3 text-center text-gray-500 hidden md:table-cell">Full CI/CD Pipeline (Dev, Staging, UAT, Prod)</td>
+                        </tr>
+                        <tr class="text-sm md:text-base bg-gray-50 md:bg-white">
+                            <td class="px-6 py-3 text-left text-gray-700"><span class="price-label">Key Caching Layer:</span> Data Handling</td>
+                            <td class="px-6 py-3 text-center text-gray-500">File-based (Slow)</td>
+                            <td class="px-6 py-3 text-center font-semibold text-primary-blue bg-teal-50">Advanced **Redis** Cache Implementation</td>
+                            <td class="px-6 py-3 text-center text-gray-500 hidden md:table-cell">Redis Cluster / Elasticache</td>
+                        </tr>
+                        <tr class="text-sm md:text-base">
+                            <td class="px-6 py-3 text-left text-gray-700"><span class="price-label">Support SLA:</span> Response Time</td>
+                            <td class="px-6 py-3 text-center text-gray-500">72 Hours (Email only)</td>
+                            <td class="px-6 py-3 text-center font-semibold text-primary-blue bg-teal-50">**12-Hour** Guaranteed Response (Business)</td>
+                            <td class="px-6 py-3 text-center text-gray-500 hidden md:table-cell">4-Hour Prioritized Response (24/7 Available)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. The Recommendation & Next Steps -->
+        <section id="recommendation" class="mb-12">
+            <div class="card p-8 bg-white text-center highlight-professional">
+                <h2 class="text-3xl font-bold text-accent-teal mb-4">
+                    4. Professional Plan: The Optimal ROI
+                </h2>
+                <p class="text-lg text-gray-700 mb-6 max-w-4xl mx-auto">
+                    The **₹80,000 Professional Plan** is engineered to minimize long-term headaches and costs. It's the critical step between a basic install and a scalable EdTech solution, protecting your budget from unforeseen performance issues or deployment errors.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 mt-8">
+                    <div class="p-4 bg-teal-50 rounded-lg border-l-4 border-accent-teal">
+                        <h3 class="font-semibold text-lg text-teal-900 mb-1">Maximized Stability</h3>
+                        <p class="text-sm text-gray-600">The Staging Environment ensures zero-risk updates and deployments.</p>
+                    </div>
+                    <div class="p-4 bg-teal-50 rounded-lg border-l-4 border-accent-teal">
+                        <h3 class="font-semibold text-lg text-teal-900 mb-1">Superior Experience</h3>
+                        <p class="text-sm text-gray-600">Bespoke theme increases user adoption and perceived platform quality.</p>
+                    </div>
+                    <div class="p-4 bg-teal-50 rounded-lg border-l-4 border-accent-teal">
+                        <h3 class="font-semibold text-lg text-teal-900 mb-1">Clear Path to Growth</h3>
+                        <p class="text-sm text-gray-600">5X capacity handles organic growth effortlessly without immediate re-investment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 5. Final Call to Action -->
+        <section id="cta" class="py-12 px-6 md:px-12 bg-primary-blue rounded-xl shadow-2xl text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                Ready to Build a Better LMS?
+            </h2>
+            <p class="text-lg text-gray-200 mb-8">
+                Let's discuss the technical blueprint for the Professional Plan and secure your strategic investment today.
+            </p>
+            <a href="#" class="inline-block px-10 py-4 text-xl font-bold text-primary-blue bg-white rounded-full transition duration-300 hover:bg-accent-teal hover:text-white shadow-lg">
+                Schedule a Technical Review
+            </a>
+        </section>
+
+    </div>
+
+</body>
+</html>

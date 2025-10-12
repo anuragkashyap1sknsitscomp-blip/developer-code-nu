@@ -1,48 +1,84 @@
 export function CuratorSection() {
+  // Define colors for the monochrome dark theme consistency
+  const BG_DARK = "bg-[#0a0a0a]";
+  const TEXT_MUTED = "text-gray-400";
+  const TEXT_SUBTLE_ACCENT = "text-gray-200"; // Used for small accents
+  const BORDER_COLOR = "border-gray-700";
+  
   return (
-    <section className="relative w-full min-h-screen flex items-center py-32 px-6">
-      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="relative aspect-square lg:aspect-[3/4] overflow-hidden rounded-lg">
+    // Uses the same dark gray background for consistency
+    <section className={`relative w-full ${BG_DARK} text-white py-28 sm:py-36 px-6`}>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        
+        {/* Image Column */}
+        <div className="relative w-full aspect-[4/3] sm:aspect-square lg:aspect-[3/4] overflow-hidden rounded-xl 
+                        /* Subtle shadow for lift */
+                        shadow-[0_10px_30px_rgba(0,0,0,0.5),_0_0_15px_rgba(255,255,255,0.05)] 
+                        transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(0,0,0,0.7),_0_0_25px_rgba(255,255,255,0.1)]">
           <img
             src="/professional-portrait-of-nutrition-scientist-in-la.jpg"
             alt="Dr. Sarah Chen, Chief Curator"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top" 
           />
         </div>
 
-        <div className="space-y-8">
-          <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">Meet the Curator</p>
+        {/* Content Column */}
+        <div className="space-y-8 sm:space-y-10">
+          
+          {/* Header */}
+          <p className={`text-sm tracking-[0.3em] uppercase ${TEXT_SUBTLE_ACCENT} font-medium pb-2 border-b ${BORDER_COLOR} inline-block`}>
+            Chief Scientific Officer
+          </p>
 
-          <h2 className="font-serif text-5xl md:text-6xl">Dr. Sarah Chen</h2>
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+            Meet Dr. Sarah Chen
+          </h2>
 
-          <div className="space-y-6 text-muted-foreground leading-relaxed">
-            <p className="text-lg">
-              "Our mission is to cut through the noise of the supplement industry. Too many products make bold claims
+          <div className="space-y-8 text-gray-300 leading-relaxed pt-2">
+            
+            {/* Quote Section with monochrome styling */}
+            <p className={`text-xl sm:text-2xl font-light italic text-white/90 border-l-4 border-gray-500 pl-4 sm:pl-6 py-1`}>
+              "Our mission is to **cut through the noise** of the supplement industry. Too many products make bold claims
               without the science to back them up."
             </p>
 
-            <p>
-              With over 15 years in nutritional biochemistry and a PhD from Stanford, I've dedicated my career to
+            {/* Main Text Block 1 */}
+            <p className="text-base sm:text-lg">
+              With over **15 years in nutritional biochemistry** and a **PhD from Stanford**, I've dedicated my career to
               identifying supplements that actually work. Every product in our collection has been personally vetted for
               efficacy, purity, and bioavailability.
             </p>
 
-            <p>
-              We don't just look at labels—we examine manufacturing processes, review third-party testing, and analyze
-              the research. If it doesn't meet our standards, it doesn't make the cut.
+            {/* Main Text Block 2 (Subtle text, professional voice) */}
+            <p className="text-sm sm:text-base text-gray-400">
+              We uphold the highest standard of verification. Our process involves reviewing third-party testing, analyzing
+              primary research literature, and ensuring manufacturing integrity. **If it doesn't meet our rigorous standards, it doesn't make the cut.**
             </p>
           </div>
 
-          <div className="pt-8 border-t border-border">
-            <p className="text-sm text-muted-foreground mb-2">Credentials</p>
-            <ul className="space-y-2 text-sm">
-              <li>PhD, Nutritional Biochemistry - Stanford University</li>
-              <li>Board Certified Nutrition Specialist (CNS)</li>
-              <li>Former Research Director, NIH Supplement Studies</li>
+          {/* Credentials Section with separator */}
+          <div className={`pt-10 border-t ${BORDER_COLOR}`}>
+            <p className={`text-sm ${TEXT_MUTED} mb-4 uppercase tracking-[0.2em]`}>Key Credentials</p>
+            <ul className="space-y-3 text-sm text-gray-200">
+              <li className="flex items-center">
+                {/* REVISED: Used a gray diamond for the bullet point */}
+                <span className={`${TEXT_MUTED} mr-3 text-lg leading-none`}>♦</span> 
+                PhD, Nutritional Biochemistry - **Stanford University**
+              </li>
+              <li className="flex items-center">
+                {/* REVISED: Used a gray diamond for the bullet point */}
+                <span className={`${TEXT_MUTED} mr-3 text-lg leading-none`}>♦</span> 
+                Board Certified Nutrition Specialist (CNS)
+              </li>
+              <li className="flex items-center">
+                {/* REVISED: Used a gray diamond for the bullet point */}
+                <span className={`${TEXT_MUTED} mr-3 text-lg leading-none`}>♦</span> 
+                Former Research Director, NIH Supplement Studies
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -65,8 +65,6 @@ const useDelayedState = (initialValue: string | null, delay = 100) => {
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useDelayedState(null)
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null)
@@ -76,18 +74,11 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false)
-      } else {
-        setIsVisible(true)
-      }
-      setIsScrolled(currentScrollY > 50)
-      setLastScrollY(currentScrollY)
+      setIsScrolled(window.scrollY > 50)
     }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
+  }, [])
 
   const handleMobileDropdownToggle = (label: string) => {
     setOpenMobileDropdown(openMobileDropdown === label ? null : label)
@@ -95,8 +86,14 @@ export function Navigation() {
 
   return (
     <>
-      {/* Top Announcement Bar with Continuous Banner Animation */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-amber-600 to-amber-500 text-white overflow-hidden">
+      {/* Top Announcement Bar */}
+      <div
+        className="fixed top-0 left-0 right-0 z-50 text-white overflow-hidden"
+        style={{
+          background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)"
+// 🔹 change this gradient easily
+        }}
+      >
         <div className="whitespace-nowrap flex animate-marquee text-base sm:text-lg font-semibold tracking-wide py-3">
           <span className="px-12">🚚 Free shipping on orders over $75</span>
           <span className="px-12">💯 365-Day Money Back Guarantee</span>
@@ -111,8 +108,10 @@ export function Navigation() {
 
       {/* Main Navigation Bar */}
       <nav
-        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
-          } ${isScrolled ? "bg-black/95 backdrop-blur-xl border-b border-white/10" : "bg-black/80 backdrop-blur-md"}`}
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${isScrolled
+          ? "bg-black/95 backdrop-blur-xl border-b border-white/10"
+          : "bg-black/80 backdrop-blur-md"
+          }`}
         style={{ top: "40px" }} // Adjusted for announcement bar height
       >
         <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">

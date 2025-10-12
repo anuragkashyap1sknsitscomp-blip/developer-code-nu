@@ -12,7 +12,7 @@ const complementaryProducts = [
     id: 3,
     name: "Magnesium Glycinate",
     reason: "Supports omega-3 metabolism and reduces inflammation",
-    image: "/magnesium-glycinate-supplement-bottle-on-black-bac.jpg",
+    image: "/vitamin-d3-k2-supplement-bottle-on-black-backgroun.jpg",
     price: "$32",
   },
 ]
