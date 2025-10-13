@@ -95,13 +95,13 @@ export function Navigation() {
         }}
       >
         <div className="whitespace-nowrap flex animate-marquee text-base sm:text-lg font-semibold tracking-wide py-3">
-          <span className="px-12">🚚 Free shipping on orders over $75</span>
-          <span className="px-12">💯 365-Day Money Back Guarantee</span>
-          <span className="px-12">🔥 Subscribe & Save 15%</span>
+          <span className="px-12"> Free shipping on orders over $75</span>
+          <span className="px-12"> 365-Day Money Back Guarantee</span>
+          <span className="px-12"> Subscribe & Save 15%</span>
           {/* duplicate content for seamless loop */}
-          <span className="px-12">🚚 Free shipping on orders over $75</span>
-          <span className="px-12">💯 365-Day Money Back Guarantee</span>
-          <span className="px-12">🔥 Subscribe & Save 15%</span>
+          <span className="px-12"> Free shipping on orders over $75</span>
+          <span className="px-12"> 365-Day Money Back Guarantee</span>
+          <span className="px-12"> Subscribe & Save 15%</span>
         </div>
       </div>
 
