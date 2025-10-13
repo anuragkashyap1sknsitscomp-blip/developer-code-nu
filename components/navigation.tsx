@@ -91,7 +91,7 @@ export function Navigation() {
         className="fixed top-0 left-0 right-0 z-50 text-white overflow-hidden"
         style={{
           background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)"
-// 🔹 change this gradient easily
+          // 🔹 change this gradient easily
         }}
       >
         <div className="whitespace-nowrap flex animate-marquee text-base sm:text-lg font-semibold tracking-wide py-3">
@@ -235,7 +235,9 @@ export function Navigation() {
         .animate-marquee {
           animation: marquee 20s linear infinite;
         }
+          
       `}</style>
+      
     </>
   )
 }
