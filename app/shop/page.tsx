@@ -10,7 +10,7 @@ const products = [
   {
     id: 1,
     name: "Omega-3 Elite",
-    category: "Essential Fatty Acids",
+    category: "Eat",
     description: "Triple-distilled fish oil with optimal EPA/DHA ratio",
     image: "/omega-3-capsules-transparent.png",
     price: 48,
@@ -19,7 +19,7 @@ const products = [
   {
     id: 2,
     name: "Magnesium Glycinate",
-    category: "Sleep & Recovery",
+    category: "Sleep",
     description: "Highly bioavailable chelated magnesium for optimal absorption",
     image: "/magnesium-capsules-transparent.png",
     price: 32,
@@ -28,7 +28,7 @@ const products = [
   {
     id: 3,
     name: "Vitamin D3+K2",
-    category: "Bone & Immune",
+    category: "Mind",
     description: "Synergistic combination for calcium metabolism",
     image: "/vitamin-d3-k2-supplement-bottle-on-black.png",
     price: 36,
@@ -37,7 +37,7 @@ const products = [
   {
     id: 4,
     name: "Probiotic Complex",
-    category: "Gut Health",
+    category: "Move",
     description: "Multi-strain formula for balanced digestive and immune support",
     image: "/omega-3-capsules-transparent.png",
     price: 55,
@@ -46,7 +46,7 @@ const products = [
   {
     id: 5,
     name: "Creatine Monohydrate",
-    category: "Performance",
+    category: "Move",
     description: "Micronized powder for strength, power, and muscle growth",
     image: "/magnesium-capsules-transparent.png",
     price: 25,
@@ -55,7 +55,7 @@ const products = [
   {
     id: 6,
     name: "B-Complex Ultra",
-    category: "Energy & Stress",
+    category: "Eat",
     description: "Active B vitamins for cellular energy and neurological function",
     image: "/vitamin-d3-k2-supplement-bottle-on-black.png",
     price: 38,
@@ -63,19 +63,26 @@ const products = [
   },
 ]
 
+// --- Available Category Filters ---
+const categories = ["All", "Eat", "Move", "Mind", "Sleep"]
+
 export default function ShopPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [sortOption, setSortOption] = useState("default")
+  const [activeCategory, setActiveCategory] = useState("All")
 
   // Filtering + sorting logic
   const filteredProducts = useMemo(() => {
     let currentProducts = products.filter((product) => {
-      if (searchTerm.trim() === "") return true
-      const lowerCaseSearch = searchTerm.toLowerCase()
-      return (
-        product.name.toLowerCase().includes(lowerCaseSearch) ||
-        product.description.toLowerCase().includes(lowerCaseSearch)
-      )
+      const matchesSearch =
+        searchTerm.trim() === "" ||
+        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase())
+
+      const matchesCategory =
+        activeCategory === "All" || product.category === activeCategory
+
+      return matchesSearch && matchesCategory
     })
 
     let sortedProducts = [...currentProducts]
@@ -89,7 +96,7 @@ export default function ShopPage() {
     }
 
     return sortedProducts
-  }, [searchTerm, sortOption])
+  }, [searchTerm, sortOption, activeCategory])
 
   return (
     <main className="min-h-screen bg-black">
@@ -112,7 +119,7 @@ export default function ShopPage() {
           </div>
 
           {/* Search + Sort */}
-          <div className="flex flex-col md:flex-row gap-6 mb-16 md:justify-between">
+          <div className="flex flex-col md:flex-row gap-6 mb-10 md:justify-between">
             {/* Search */}
             <div className="relative w-full md:w-auto md:min-w-[300px] order-1">
               <input
@@ -120,8 +127,6 @@ export default function ShopPage() {
                 placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                // **UPDATED STYLING:** Removed border and hover border, used darker bg-zinc-900 for input field,
-                // and a subtle focus ring for a professional look.
                 className="w-full py-3 pl-12 pr-4 text-white bg-zinc-900 rounded-md focus:ring-1 focus:ring-white/70 focus:outline-none transition-colors"
               />
               <svg
@@ -144,8 +149,6 @@ export default function ShopPage() {
               <select
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
-                // **UPDATED STYLING:** Removed border and hover border, used darker bg-zinc-900,
-                // and a subtle focus ring.
                 className="appearance-none w-full py-3 px-4 text-white bg-zinc-900 rounded-md focus:ring-1 focus:ring-white/70 focus:outline-none transition-colors cursor-pointer"
               >
                 <option value="default">Sort by: Default</option>
@@ -164,61 +167,94 @@ export default function ShopPage() {
             </div>
           </div>
 
-          {/* Product Grid (max 3 per row) */}
+          {/* ✅ Category Filter */}
+          {/* Laptop/Tablet View — Horizontal Buttons */}
+          <div className="hidden sm:flex gap-3 mb-12 overflow-x-auto scrollbar-hide flex-nowrap lg:flex-wrap lg:justify-start">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2 rounded-full border text-sm font-semibold transition-all duration-300 whitespace-nowrap
+                ${
+                  activeCategory === cat
+                    ? "bg-white text-black border-white"
+                    : "border-white/30 text-white/70 hover:bg-white/10"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* 📱 Mobile View — Dropdown */}
+          <div className="sm:hidden relative mb-12">
+            <select
+              value={activeCategory}
+              onChange={(e) => setActiveCategory(e.target.value)}
+              className="w-full py-3 px-4 bg-zinc-900 text-white rounded-md border border-white/30 focus:ring-1 focus:ring-white/70 appearance-none"
+            >
+              {categories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+            <svg
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/50 pointer-events-none"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+
+          {/* Product Grid */}
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {filteredProducts.map((product) => (
                 <Link
                   key={product.id}
                   href={`/product/${product.id}`}
-                  // **UPDATED STYLING:** Removed padding, background, border, and the strong shadow/translate hover effect.
-                  // Now relies on simple vertical padding and a very subtle background change on hover for a clean, borderless look.
-                  className="group block transition-colors duration-300 rounded-lg hover:bg-zinc-950/70 p-0"
+                  className="group block transition-colors duration-300 rounded-lg hover:bg-zinc-950/70"
                 >
-                  {/* Image Container */}
                   <div className="relative aspect-square mb-4 overflow-hidden bg-zinc-900 rounded-md">
                     <img
                       src={product.image || "/placeholder.svg"}
                       alt={product.name}
                       className="w-full h-full object-cover"
                     />
-                    {/* Removed decorative overlay for simplicity */}
                   </div>
 
-                  {/* Product Details - Added vertical padding for spacing and cleaner look */}
-                  <div className='p-2'> 
-                    {/* Category + Popularity */}
+                  <div className="p-2">
                     <div className="flex justify-between items-center mb-1">
                       <p className="text-xs tracking-widest uppercase text-white/50">
                         {product.category}
                       </p>
                       <p className="text-xs text-white/60">
-                        {/* Cleaned up popularity display for a professional vibe */}
                         Pop. {product.popularity}%
                       </p>
                     </div>
 
-                    {/* Name */}
                     <h3 className="text-xl font-serif mb-2 text-white group-hover:text-white/80 transition-colors">
                       {product.name}
                     </h3>
-
-                    {/* Description - Kept clean with text-white/70 */}
                     <p className="text-sm text-white/70 mb-3 h-10 line-clamp-2">
                       {product.description}
                     </p>
-                    
-                    {/* Price - Slightly increased price text size for emphasis */}
-                    <p className="text-xl font-semibold text-white">${product.price}</p>
+                    <p className="text-xl font-semibold text-white">
+                      ${product.price}
+                    </p>
                   </div>
                 </Link>
               ))}
             </div>
           ) : (
-            // No Products Found - Styled for better integration
             <div className="text-center py-20 bg-zinc-900 rounded-md">
-              <h2 className="text-2xl text-white/80 font-serif mb-3">No products found 😔</h2>
-              <p className="text-white/50">Try adjusting your search term.</p>
+              <h2 className="text-2xl text-white/80 font-serif mb-3">
+                No products found 😔
+              </h2>
+              <p className="text-white/50">Try adjusting your filters or search.</p>
             </div>
           )}
         </div>
