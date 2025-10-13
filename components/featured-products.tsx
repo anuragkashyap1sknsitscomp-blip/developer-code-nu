@@ -12,8 +12,8 @@ const DOCTOR_CARDS_DATA = [
     title: "Get the best sleep of your life",
     description:
       "Better nights make for better days. Wake up to in-depth sleep analysis and deeper insight into your blood oxygen levels [SpO2] to improve your habits and transform how you feel all day long.",
-    backgroundImage: "/professional-portrait-of-nutrition-scientist-in-la.jpg",
-    doctorImage: "/professional-portrait-of-nutrition-scientist-in-la.jpg",
+    backgroundImage: "https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?s=612x612&w=0&k=20&c=S93n5iTDVG3_kJ9euNNUKVl9pgXTOdVQcI_oDGG-QlE=",
+    doctorImage: "https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?s=612x612&w=0&k=20&c=S93n5iTDVG3_kJ9euNNUKVl9pgXTOdVQcI_oDGG-QlE=",
     doctorName: "Dr. Anya Sharma",
     testimonial:
       "I've learned that sleep is the most underrated recovery tool out there.",
@@ -33,8 +33,8 @@ const DOCTOR_CARDS_DATA = [
     title: "Don't just live longer, live healthier",
     description:
       "Optimize your well-being with tailored wellness plans focusing on nutrition, mindfulness, and daily habits to boost vitality and extend healthy years.",
-    backgroundImage: "/professional-portrait-of-nutrition-scientist-in-la.jpg",
-    doctorImage: "/professional-portrait-of-nutrition-scientist-in-la.jpg",
+    backgroundImage: "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg",
+    doctorImage: "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg",
     doctorName: "Dr. John Smith",
     testimonial:
       "Preventive health is the cornerstone of a long and vibrant life.",
@@ -51,8 +51,8 @@ const DOCTOR_CARDS_DATA = [
     title: "Bring your fitness goals into focus",
     description:
       "Achieve peak performance with personalized workout insights, recovery tracking, and progress monitoring. Understand your body's response to training like never before.",
-    backgroundImage: "/professional-portrait-of-nutrition-scientist-in-la.jpg",
-    doctorImage: "/professional-portrait-of-nutrition-scientist-in-la.jpg",
+    backgroundImage: "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg",
+    doctorImage: "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg",
     doctorName: "Dr. Sarah Khan",
     testimonial:
       "Understanding your body's recovery is just as crucial as your training.",
