@@ -12,7 +12,7 @@ const navItems = [
     href: "/shop",
     dropdown: [
       { label: "All Products", href: "/shop" },
-      { label: "Best Sellers", href: "/shop?filter=bestsellers" },
+      { label: "Best Sellers", href: "/bestsellers" },
       { label: "New Arrivals", href: "/shop?filter=new" },
       { label: "Bundles", href: "/shop?filter=bundles" },
       { label: "Subscriptions", href: "/shop?filter=subscriptions" },
