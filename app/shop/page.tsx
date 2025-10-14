@@ -4,11 +4,13 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 import { useState, useMemo } from "react"
+import { useCart } from "@/contexts/cart-context" // ✅ Import your global Cart Context
+import { useToast } from "@/hooks/use-toast"
 
 // --- Product Data ---
 const products = [
   {
-    id: 1,
+    id: "1",
     name: "Omega-3 Elite",
     category: "Eat",
     description: "Triple-distilled fish oil with optimal EPA/DHA ratio",
@@ -17,7 +19,7 @@ const products = [
     popularity: 80,
   },
   {
-    id: 2,
+    id: "2",
     name: "Magnesium Glycinate",
     category: "Sleep",
     description: "Highly bioavailable chelated magnesium for optimal absorption",
@@ -26,7 +28,7 @@ const products = [
     popularity: 70,
   },
   {
-    id: 3,
+    id: "3",
     name: "Vitamin D3+K2",
     category: "Mind",
     description: "Synergistic combination for calcium metabolism",
@@ -35,7 +37,7 @@ const products = [
     popularity: 85,
   },
   {
-    id: 4,
+    id: "4",
     name: "Probiotic Complex",
     category: "Move",
     description: "Multi-strain formula for balanced digestive and immune support",
@@ -44,7 +46,7 @@ const products = [
     popularity: 90,
   },
   {
-    id: 5,
+    id: "5",
     name: "Creatine Monohydrate",
     category: "Move",
     description: "Micronized powder for strength, power, and muscle growth",
@@ -53,7 +55,7 @@ const products = [
     popularity: 95,
   },
   {
-    id: 6,
+    id: "6",
     name: "B-Complex Ultra",
     category: "Eat",
     description: "Active B vitamins for cellular energy and neurological function",
@@ -70,8 +72,33 @@ export default function ShopPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [sortOption, setSortOption] = useState("default")
   const [activeCategory, setActiveCategory] = useState("All")
+  const [addedIds, setAddedIds] = useState<string[]>([])
+  const { addToCart } = useCart()
+  const { toast } = useToast()
 
-  // Filtering + sorting logic
+  // ✅ Handle add to cart (with toast + visual feedback)
+  const handleAddToCart = (product: any) => {
+    if (addedIds.includes(product.id)) return
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    })
+    setAddedIds((prev) => [...prev, product.id])
+
+    toast({
+      title: "🛒 Added to cart",
+      description: `${product.name} added successfully.`,
+    })
+
+    // Reset button state after 1.5 seconds
+    setTimeout(() => {
+      setAddedIds((prev) => prev.filter((id) => id !== product.id))
+    }, 1500)
+  }
+
+  // ✅ Filtering + Sorting
   const filteredProducts = useMemo(() => {
     let currentProducts = products.filter((product) => {
       const matchesSearch =
@@ -85,17 +112,16 @@ export default function ShopPage() {
       return matchesSearch && matchesCategory
     })
 
-    let sortedProducts = [...currentProducts]
-
-    if (sortOption === "low-high") {
-      sortedProducts.sort((a, b) => a.price - b.price)
-    } else if (sortOption === "high-low") {
-      sortedProducts.sort((a, b) => b.price - a.price)
-    } else if (sortOption === "popular") {
-      sortedProducts.sort((a, b) => b.popularity - a.popularity)
+    switch (sortOption) {
+      case "low-high":
+        return currentProducts.sort((a, b) => a.price - b.price)
+      case "high-low":
+        return currentProducts.sort((a, b) => b.price - a.price)
+      case "popular":
+        return currentProducts.sort((a, b) => b.popularity - a.popularity)
+      default:
+        return currentProducts
     }
-
-    return sortedProducts
   }, [searchTerm, sortOption, activeCategory])
 
   return (
@@ -104,7 +130,7 @@ export default function ShopPage() {
 
       <div className="pt-40 pb-32 px-6 lg:px-12">
         <div className="max-w-screen-2xl mx-auto">
-          {/* Header Section */}
+          {/* Header */}
           <div className="mb-12 md:mb-20">
             <p className="text-sm tracking-[0.3em] uppercase text-white/60 mb-4">
               Code Nutrition
@@ -162,31 +188,33 @@ export default function ShopPage() {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
 
-          {/* ✅ Category Filter */}
-          {/* Laptop/Tablet View — Horizontal Buttons */}
+          {/* Category Filter */}
           <div className="hidden sm:flex gap-3 mb-12 overflow-x-auto scrollbar-hide flex-nowrap lg:flex-wrap lg:justify-start">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded-full border text-sm font-semibold transition-all duration-300 whitespace-nowrap
-                ${
-                  activeCategory === cat
+                className={`px-5 py-2 rounded-full border text-sm font-semibold transition-all duration-300 whitespace-nowrap ${activeCategory === cat
                     ? "bg-white text-black border-white"
                     : "border-white/30 text-white/70 hover:bg-white/10"
-                }`}
+                  }`}
               >
                 {cat}
               </button>
             ))}
           </div>
 
-          {/* 📱 Mobile View — Dropdown */}
+          {/* Mobile Category */}
           <div className="sm:hidden relative mb-12">
             <select
               value={activeCategory}
@@ -205,7 +233,12 @@ export default function ShopPage() {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
             </svg>
           </div>
 
@@ -213,20 +246,21 @@ export default function ShopPage() {
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {filteredProducts.map((product) => (
-                <Link
+                <div
                   key={product.id}
-                  href={`/product/${product.id}`}
-                  className="group block transition-colors duration-300 rounded-lg hover:bg-zinc-950/70"
+                  className="group block transition-colors duration-300 rounded-lg bg-zinc-900 hover:bg-zinc-950/70 border border-white/5"
                 >
-                  <div className="relative aspect-square mb-4 overflow-hidden bg-zinc-900 rounded-md">
-                    <img
-                      src={product.image || "/placeholder.svg"}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <Link href={`/product/${product.id}`}>
+                    <div className="relative aspect-square overflow-hidden rounded-t-md">
+                      <img
+                        src={product.image || "/placeholder.svg"}
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  </Link>
 
-                  <div className="p-2">
+                  <div className="p-5">
                     <div className="flex justify-between items-center mb-1">
                       <p className="text-xs tracking-widest uppercase text-white/50">
                         {product.category}
@@ -239,14 +273,30 @@ export default function ShopPage() {
                     <h3 className="text-xl font-serif mb-2 text-white group-hover:text-white/80 transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-white/70 mb-3 h-10 line-clamp-2">
+                    <p className="text-sm text-white/70 mb-4 h-10 line-clamp-2">
                       {product.description}
                     </p>
-                    <p className="text-xl font-semibold text-white">
-                      ${product.price}
-                    </p>
+
+                    <div className="flex justify-between items-center">
+                      <p className="text-xl font-semibold text-white">
+                        ${product.price}
+                      </p>
+
+                      {/* Add to Cart Button */}
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        disabled={addedIds.includes(product.id)}
+                        className={`px-4 py-2 text-sm rounded-md font-medium transition-all duration-300 ${addedIds.includes(product.id)
+                            ? "bg-green-500 text-white cursor-default"
+                            : "bg-black text-white hover:bg-gray-900"
+                          }`}
+                      >
+                        {addedIds.includes(product.id) ? "Added ✓" : "Quick Add to Cart"}
+                      </button>
+
+                    </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           ) : (
@@ -254,7 +304,9 @@ export default function ShopPage() {
               <h2 className="text-2xl text-white/80 font-serif mb-3">
                 No products found 😔
               </h2>
-              <p className="text-white/50">Try adjusting your filters or search.</p>
+              <p className="text-white/50">
+                Try adjusting your filters or search.
+              </p>
             </div>
           )}
         </div>
