@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { createContext, useContext, useState, useCallback } from "react"
+import { createContext, useContext, useState, useCallback, useEffect } from "react"
 import { useToast } from "@/hooks/use-toast"
 
 export interface CartItem {
@@ -10,14 +10,14 @@ export interface CartItem {
   price: number
   quantity: number
   image: string
-  format?: string // Added optional format property for product variants
+  format?: string // For product variants (like size, color, etc.)
 }
 
 interface CartContextType {
   items: CartItem[]
   addToCart: (item: Omit<CartItem, "quantity"> & { quantity?: number }) => void
-  removeFromCart: (id: string) => void
-  updateQuantity: (id: string, quantity: number) => void
+  removeFromCart: (id: string, format?: string) => void
+  updateQuantity: (id: string, quantity: number, format?: string) => void
   clearCart: () => void
   getCartCount: () => number
   getCartTotal: () => number
@@ -29,52 +29,90 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
   const { toast } = useToast()
 
+  // ✅ Load cart from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem("cart-items")
+    if (stored) setItems(JSON.parse(stored))
+  }, [])
+
+  // ✅ Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cart-items", JSON.stringify(items))
+  }, [items])
+
+  // ✅ Add item to cart (considering product format)
   const addToCart = useCallback(
     (item: Omit<CartItem, "quantity"> & { quantity?: number }) => {
       setItems((prevItems) => {
-        const existingItem = prevItems.find((i) => i.id === item.id)
+        const existingItem = prevItems.find(
+          (i) => i.id === item.id && i.format === item.format
+        )
 
         if (existingItem) {
-          // Update quantity if item already exists
-          return prevItems.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + (item.quantity || 1) } : i))
+          return prevItems.map((i) =>
+            i.id === item.id && i.format === item.format
+              ? { ...i, quantity: i.quantity + (item.quantity || 1) }
+              : i
+          )
         }
 
-        // Add new item
         return [...prevItems, { ...item, quantity: item.quantity || 1 }]
       })
 
       toast({
-        title: "Added to cart",
-        description: `${item.name} has been added to your cart.`,
+        title: "✅ Added to cart",
+        description: `${item.name}${item.format ? ` (${item.format})` : ""} has been added to your cart.`,
       })
     },
-    [toast],
+    [toast]
   )
 
-  const removeFromCart = useCallback((id: string) => {
-    setItems((prevItems) => prevItems.filter((item) => item.id !== id))
-  }, [])
+  // ✅ Remove item by id + format
+  const removeFromCart = useCallback((id: string, format?: string) => {
+    setItems((prevItems) =>
+      prevItems.filter((item) => !(item.id === id && item.format === format))
+    )
+    toast({
+      title: "🗑️ Removed from cart",
+      description: "Item has been removed from your cart.",
+    })
+  }, [toast])
 
+  // ✅ Update quantity
   const updateQuantity = useCallback(
-    (id: string, quantity: number) => {
+    (id: string, quantity: number, format?: string) => {
       if (quantity <= 0) {
-        removeFromCart(id)
+        removeFromCart(id, format)
         return
       }
 
-      setItems((prevItems) => prevItems.map((item) => (item.id === id ? { ...item, quantity } : item)))
+      setItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === id && item.format === format
+            ? { ...item, quantity }
+            : item
+        )
+      )
     },
-    [removeFromCart],
+    [removeFromCart]
   )
 
+  // ✅ Clear cart
   const clearCart = useCallback(() => {
     setItems([])
-  }, [])
+    localStorage.removeItem("cart-items")
+    toast({
+      title: "🧺 Cart cleared",
+      description: "Your cart has been emptied.",
+    })
+  }, [toast])
 
+  // ✅ Total items count
   const getCartCount = useCallback(() => {
     return items.reduce((total, item) => total + item.quantity, 0)
   }, [items])
 
+  // ✅ Total price
   const getCartTotal = useCallback(() => {
     return items.reduce((total, item) => total + item.price * item.quantity, 0)
   }, [items])
