@@ -233,7 +233,7 @@ export default function ShopPage() {
           {/* --- See All Products Button (Smaller and stylish, centered at the bottom) --- */}
           <div className="text-center pt-12">
             <Link 
-              href="/" // Change this to your "All Products" page path, e.g., "/shop"
+              href="/shop" // Change this to your "All Products" page path, e.g., "/shop"
               className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-white text-black rounded-full hover:bg-gray-200 transition-all duration-300 shadow-xl"
             >
               See All Products
@@ -250,4 +250,5 @@ export default function ShopPage() {
       <Footer />
     </main>
   )
+
 }
