@@ -291,7 +291,7 @@ export default function ShopPage() {
                             : "bg-black text-white hover:bg-gray-900"
                           }`}
                       >
-                        {addedIds.includes(product.id) ? "Added ✓" : "Quick Add to Cart"}
+                        {addedIds.includes(product.id) ? "Added ✓" : "Add to Cart"}
                       </button>
 
                     </div>
