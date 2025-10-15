@@ -81,19 +81,7 @@ const ProductCard = ({ product, handleAddToCart, addedIds }) => {
       key={product.id}
       className="group relative block transition-colors duration-300 rounded-lg bg-zinc-900 hover:bg-zinc-950/70 border border-white/5 overflow-hidden" 
     >
-      {/* Best Seller Ribbon (Green color, fully visible) */}
-      {isBestSeller && (
-        // Ribbon container. Positioned relative to the card, but the ribbon itself
-        // is rotated and translated to appear from the top-left corner.
-        <div className="absolute top-0 left-0 z-20 overflow-hidden w-28 h-28">
-          <span
-            className="absolute top-[20px] -left-[50px] w-[180px] text-center py-1 bg-green-500 text-white text-sm font-bold shadow-md transform -rotate-45"
-            // The position (top and left) and width are adjusted for a prominent ribbon look
-          >
-            BEST SELLER
-          </span>
-        </div>
-      )}
+      
       
       <Link href={`/product/${product.id}`}>
         <div className="relative aspect-square rounded-t-lg"> 
@@ -161,9 +149,7 @@ const BestSellersSection = ({ handleAddToCart, addedIds }) => {
 
   return (
     <div className="mb-20">
-      <h2 className="font-serif text-4xl md:text-5xl text-white mb-8 border-b border-white/10 pb-4">
-        🏆 Our Best Sellers
-      </h2>
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
         {bestSellers.map((product) => (
           <ProductCard
@@ -250,5 +236,4 @@ export default function ShopPage() {
       <Footer />
     </main>
   )
-
 }
