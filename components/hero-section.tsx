@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
 const heroImages = 
-  
+
   "/images/vitamin12.png",
   "/images/magenisum.png",
   "/images/vitamink2.png",
