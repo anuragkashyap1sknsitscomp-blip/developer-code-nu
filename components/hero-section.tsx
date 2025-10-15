@@ -85,7 +85,7 @@ export function HeroSection() {
           {/* Text Section */}
           <div className="w-full lg:w-[50%] text-center lg:text-left space-y-3 md:space-y-4 lg:space-y-6 order-2 lg:order-1 pt-4 lg:pt-0">
             <p className="text-white/70 uppercase tracking-[0.3em] text-xs sm:text-sm font-medium border-l-2 border-white/50 pl-4 inline-block">
-              — CURATED EXCELLENCE,
+              CURATED EXCELLENCE,
             </p>
             <h1 className="text-4xl sm:text-4xl md:text-5xl font-sans leading-tight tracking-tighter">
               <span className="block text-white"></span>
