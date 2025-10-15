@@ -3,12 +3,13 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
-const heroImages =
+const heroImages = [
+  
   "/images/vitamin12.png",
   "/images/magenisum.png",
   "/images/vitamink2.png",
 ]
- 
+
 const CATEGORY_TILES_DATA = [
   {
     title: "EAT",
