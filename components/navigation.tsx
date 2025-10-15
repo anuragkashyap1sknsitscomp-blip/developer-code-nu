@@ -63,56 +63,87 @@ const useDelayedState = (initialValue: string | null, delay = 100) => {
   return [value, setDelayedValue] as const
 }
 
+// Data for the announcement banner
+const announcements = [
+  "Free shipping on orders over $75",
+  "365-Day Money Back Guarantee",
+  "Subscribe & Save 15%",
+]
+
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useDelayedState(null)
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null)
+  const [currentAnnouncement, setCurrentAnnouncement] = useState(0)
 
   const { getCartCount } = useCart()
   const cartCount = getCartCount()
 
+  // Effect for scrolling behavior of the nav bar
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 10)
     }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Effect for cycling through announcements on the banner
+  useEffect(() => {
+    const announcementInterval = setInterval(() => {
+      setCurrentAnnouncement((prevIndex) => (prevIndex + 1) % announcements.length)
+    }, 4000) // Change message every 4 seconds
+    return () => clearInterval(announcementInterval)
+  }, [])
+
 
   const handleMobileDropdownToggle = (label: string) => {
     setOpenMobileDropdown(openMobileDropdown === label ? null : label)
   }
 
   return (
-    <>
+    // We wrap both the banner and nav in a fixed header for robust positioning
+    <header className="fixed top-0 left-0 right-0 z-50">
       {/* Top Announcement Bar */}
       <div
-        className="fixed top-0 left-0 right-0 z-50 text-white overflow-hidden"
+        className="text-white text-center text-sm font-semibold tracking-wide"
         style={{
-          background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)"
-          // 🔹 change this gradient easily
+          background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
         }}
       >
-        <div className="whitespace-nowrap flex animate-marquee text-base sm:text-lg font-semibold tracking-wide py-3">
-          <span className="px-12"> Free shipping on orders over $75</span>
-          <span className="px-12"> 365-Day Money Back Guarantee</span>
-          <span className="px-12"> Subscribe & Save 15%</span>
-          {/* duplicate content for seamless loop */}
-          <span className="px-12"> Free shipping on orders over $75</span>
-          <span className="px-12"> 365-Day Money Back Guarantee</span>
-          <span className="px-12"> Subscribe & Save 15%</span>
+        {/* Mobile View: Fading announcements */}
+        <div className="sm:hidden relative h-10 flex items-center justify-center overflow-hidden">
+          {announcements.map((text, index) => (
+            <span
+              key={index}
+              className={`absolute transition-all duration-500 ease-in-out ${
+                index === currentAnnouncement
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-2"
+              }`}
+            >
+              {text}
+            </span>
+          ))}
+        </div>
+        
+        {/* Desktop View: Stable announcements */}
+        <div className="hidden sm:flex max-w-screen-2xl mx-auto items-center justify-center gap-x-18 px-6 py-2">
+           <span>Free shipping on orders over $75</span>
+           <span className="hidden md:inline">•</span>
+           <span>365-Day Money Back Guarantee</span>
+           <span className="hidden lg:inline">•</span>
+           <span>Subscribe & Save 15%</span>
         </div>
       </div>
-
-
+      
       {/* Main Navigation Bar */}
       <nav
-        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${isScrolled
-          ? "bg-black/95 backdrop-blur-xl border-b border-white/10"
-          : "bg-black/80 backdrop-blur-md"
+        className={`transition-all duration-300 ${isScrolled
+            ? "bg-black/95 backdrop-blur-xl border-b border-white/10"
+            : "bg-black/80 backdrop-blur-md"
           }`}
-        style={{ top: "40px" }} // Adjusted for announcement bar height
       >
         <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
           {/* Logo */}
@@ -221,23 +252,6 @@ export function Navigation() {
           </div>
         )}
       </nav>
-
-      {/* Animation CSS */}
-      <style jsx global>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 20s linear infinite;
-        }
-          
-      `}</style>
-      
-    </>
+    </header>
   )
 }
