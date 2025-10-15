@@ -129,7 +129,7 @@ export function Navigation() {
         </div>
         
         {/* Desktop View: Stable announcements */}
-        <div className="hidden sm:flex max-w-screen-2xl mx-auto items-center justify-center gap-x-18 px-6 py-2">
+        <div className="hidden sm:flex max-w-screen-2xl mx-auto items-center justify-center gap-x-26 px-6 py-2">
            <span>Free shipping on orders over $75</span>
            <span className="hidden md:inline">•</span>
            <span>365-Day Money Back Guarantee</span>
