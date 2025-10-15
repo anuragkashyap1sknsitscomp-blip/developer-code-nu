@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
+// ERROR FIX: Replaced next/image import with standard <img> tag in the component below.
+// import Image from "next/image" 
 import { motion, AnimatePresence } from "framer-motion"
 
 // --- Doctor Cards Data ---
@@ -70,7 +71,8 @@ const InteractiveDoctorCard = ({ card, isOpen, onToggle }: any) => {
   return (
     <motion.div
       layout
-      className={`relative rounded-3xl overflow-hidden cursor-pointer group flex-shrink-0 transition-all duration-700 transform-gpu 
+      // Border radius is set to rounded-lg (as requested)
+      className={`relative rounded-lg overflow-hidden cursor-pointer group flex-shrink-0 transition-all duration-700 transform-gpu 
         ${isOpen ? "lg:w-[60%] w-full" : "lg:w-[25%] w-full"}
         h-[550px]`}
       style={{
@@ -165,15 +167,15 @@ const InteractiveDoctorCard = ({ card, isOpen, onToggle }: any) => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex flex-col p-4 rounded-xl bg-white/10 backdrop-blur-sm shadow-xl flex-1 min-w-[240px]"
+                className="flex flex-col p-4 rounded-lg bg-white/10 backdrop-blur-sm shadow-xl flex-1 min-w-[240px]"
               >
                 <div className="flex items-center mb-3">
-                  <Image
+                  {/* FIX: Replaced <Image> with standard <img> tag */}
+                  <img
                     src={card.doctorImage}
                     alt={card.doctorName}
-                    width={48}
-                    height={48}
-                    className="rounded-full object-cover mr-3"
+                    // Removed width and height attributes, added size using Tailwind CSS for responsive design
+                    className="rounded-full object-cover mr-3 w-12 h-12"
                   />
                   <div>
                     <p className="font-semibold text-base sm:text-lg">
@@ -194,7 +196,7 @@ const InteractiveDoctorCard = ({ card, isOpen, onToggle }: any) => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="p-4 rounded-xl bg-white/10 backdrop-blur-sm shadow-xl flex-1 min-w-[240px]"
+                className="p-4 rounded-lg bg-white/10 backdrop-blur-sm shadow-xl flex-1 min-w-[240px]"
               >
                 {Object.entries(card.details).map(([key, value]) => (
                   <p
@@ -235,7 +237,7 @@ export function FeaturedProducts() {
         Learn how our specialists guide you to better health through personalized insights and proven strategies.
       </p>
 
-      {/* ✅ Center Align with Justify Center */}
+      {/* Fully responsive container: stacks vertically on mobile (flex-col) and becomes horizontal on large screens (lg:flex-row) */}
       <motion.div
         layout
         className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 md:gap-8 items-stretch justify-center"
