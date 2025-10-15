@@ -1,8 +1,6 @@
 "use client"
 
 import { useState } from "react"
-// ERROR FIX: Replaced next/image import with standard <img> tag in the component below.
-// import Image from "next/image" 
 import { motion, AnimatePresence } from "framer-motion"
 
 // --- Doctor Cards Data ---
@@ -13,8 +11,10 @@ const DOCTOR_CARDS_DATA = [
     title: "Get the best sleep of your life",
     description:
       "Better nights make for better days. Wake up to in-depth sleep analysis and deeper insight into your blood oxygen levels [SpO2] to improve your habits and transform how you feel all day long.",
-    backgroundImage: "https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?s=612x612&w=0&k=20&c=S93n5iTDVG3_kJ9euNNUKVl9pgXTOdVQcI_oDGG-QlE=",
-    doctorImage: "https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?s=612x612&w=0&k=20&c=S93n5iTDVG3_kJ9euNNUKVl9pgXTOdVQcI_oDGG-QlE=",
+    backgroundImage:
+      "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg",
+    doctorImage:
+      "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg",
     doctorName: "Dr. Anya Sharma",
     testimonial:
       "I've learned that sleep is the most underrated recovery tool out there.",
@@ -27,15 +27,16 @@ const DOCTOR_CARDS_DATA = [
       Deep: "1h 19m 16%",
     },
   },
-  
   {
     id: "wellness",
     tag: "Wellness and Longevity",
     title: "Don't just live longer, live healthier",
     description:
       "Optimize your well-being with tailored wellness plans focusing on nutrition, mindfulness, and daily habits to boost vitality and extend healthy years.",
-    backgroundImage: "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg",
-    doctorImage: "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg",
+    backgroundImage:
+      "https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?s=612x612&w=0&k=20&c=S93n5iTDVG3_kJ9euNNUKVl9pgXTOdVQcI_oDGG-QlE=",
+    doctorImage:
+      "https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?s=612x612&w=0&k=20&c=S93n5iTDVG3_kJ9euNNUKVl9pgXTOdVQcI_oDGG-QlE=",
     doctorName: "Dr. John Smith",
     testimonial:
       "Preventive health is the cornerstone of a long and vibrant life.",
@@ -52,9 +53,11 @@ const DOCTOR_CARDS_DATA = [
     title: "Bring your fitness goals into focus",
     description:
       "Achieve peak performance with personalized workout insights, recovery tracking, and progress monitoring. Understand your body's response to training like never before.",
-    backgroundImage: "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg",
-    doctorImage: "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg",
-    doctorName: "Dr. Sarah Khan",
+    backgroundImage:
+      "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg",
+    doctorImage:
+      "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg",
+    doctorName: "Dr. Priya Sharma",
     testimonial:
       "Understanding your body's recovery is just as crucial as your training.",
     details: {
@@ -71,7 +74,6 @@ const InteractiveDoctorCard = ({ card, isOpen, onToggle }: any) => {
   return (
     <motion.div
       layout
-      // Border radius is set to rounded-lg (as requested)
       className={`relative rounded-lg overflow-hidden cursor-pointer group flex-shrink-0 transition-all duration-700 transform-gpu 
         ${isOpen ? "lg:w-[60%] w-full" : "lg:w-[25%] w-full"}
         h-[550px]`}
@@ -170,11 +172,9 @@ const InteractiveDoctorCard = ({ card, isOpen, onToggle }: any) => {
                 className="flex flex-col p-4 rounded-lg bg-white/10 backdrop-blur-sm shadow-xl flex-1 min-w-[240px]"
               >
                 <div className="flex items-center mb-3">
-                  {/* FIX: Replaced <Image> with standard <img> tag */}
                   <img
                     src={card.doctorImage}
                     alt={card.doctorName}
-                    // Removed width and height attributes, added size using Tailwind CSS for responsive design
                     className="rounded-full object-cover mr-3 w-12 h-12"
                   />
                   <div>
@@ -205,7 +205,6 @@ const InteractiveDoctorCard = ({ card, isOpen, onToggle }: any) => {
                   >
                     <span className="text-white/70">{key}</span>
                     <span className="font-medium">{value?.toString()}</span>
-
                   </p>
                 ))}
               </motion.div>
@@ -237,7 +236,6 @@ export function FeaturedProducts() {
         Learn how our specialists guide you to better health through personalized insights and proven strategies.
       </p>
 
-      {/* Fully responsive container: stacks vertically on mobile (flex-col) and becomes horizontal on large screens (lg:flex-row) */}
       <motion.div
         layout
         className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 md:gap-8 items-stretch justify-center"
