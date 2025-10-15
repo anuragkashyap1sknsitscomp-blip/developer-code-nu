@@ -117,42 +117,42 @@ export function Navigation() {
           {announcements.map((text, index) => (
             <span
               key={index}
-              className={`absolute transition-all duration-500 ease-in-out ${
-                index === currentAnnouncement
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-2"
-              }`}
+              className={`absolute transition-all duration-500 ease-in-out ${index === currentAnnouncement
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-2"
+                }`}
             >
               {text}
             </span>
           ))}
         </div>
-        
+
         {/* Desktop View: Stable announcements */}
-        <div className="hidden sm:flex max-w-screen-2xl mx-auto items-center justify-center gap-x-26 px-6 py-2">
-           <span>Free shipping on orders over $75</span>
-           <span className="hidden md:inline">•</span>
-           <span>365-Day Money Back Guarantee</span>
-           <span className="hidden lg:inline">•</span>
-           <span>Subscribe & Save 15%</span>
+        <div className="hidden sm:flex max-w-screen-2xl mx-auto items-center justify-center gap-x-25 px-6 py-2">
+          <span>Free shipping on orders over $75</span>
+          <span className="hidden md:inline">•</span>
+          <span>365-Day Money Back Guarantee</span>
+          <span className="hidden lg:inline">•</span>
+          <span>Subscribe & Save 15%</span>
         </div>
       </div>
-      
+
       {/* Main Navigation Bar */}
       <nav
         className={`transition-all duration-300 ${isScrolled
-            ? "bg-black/95 backdrop-blur-xl border-b border-white/10"
-            : "bg-black/80 backdrop-blur-md"
+          ? "bg-black/95 backdrop-blur-xl border-b border-white/10"
+          : "bg-black/80 backdrop-blur-md"
           }`}
       >
-        <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="text-2xl font-serif tracking-tight text-white hover:text-white/80 transition-colors"
-          >
-            Code Nutrition
+        <div className="max-w-screen-2xl mx-auto px-6 lg:px-6 py-3 flex items-center justify-between">
+          <Link href="/" className="block">
+            <img
+              src="/images/logo02.jpeg"
+              alt="Logo"
+              className="h-12 w-auto object-contain"
+            />
           </Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
