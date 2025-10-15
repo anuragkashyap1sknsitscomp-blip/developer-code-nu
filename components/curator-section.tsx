@@ -1,20 +1,24 @@
 export function CuratorSection() {
   // Define colors for the monochrome dark theme consistency
-  const BG_DARK = "bg-[#0a0a0a]";
+  // UPDATED: Changed background color to pure black (bg-black)
+  const BG_DARK = "bg-black"; 
   const TEXT_MUTED = "text-gray-400";
   const TEXT_SUBTLE_ACCENT = "text-gray-200"; // Used for small accents
   const BORDER_COLOR = "border-gray-700";
   
   return (
-    // Uses the same dark gray background for consistency
-    <section className={`relative w-full ${BG_DARK} text-white py-28 sm:py-36 px-6`}>
+    // UPDATED: Uses bg-black and vertical padding reduced from py-28/py-36 to py-16
+    <section className={`relative w-full ${BG_DARK} text-white py-16 px-6`}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         
         {/* Image Column */}
-        <div className="relative w-full aspect-[4/3] sm:aspect-square lg:aspect-[3/4] overflow-hidden rounded-xl 
-                        /* Subtle shadow for lift */
-                        shadow-[0_10px_30px_rgba(0,0,0,0.5),_0_0_15px_rgba(255,255,255,0.05)] 
-                        transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(0,0,0,0.7),_0_0_25px_rgba(255,255,255,0.1)]">
+        <div 
+          // UPDATED: Border radius reduced from rounded-xl to rounded-lg
+          className="relative w-full aspect-[4/3] sm:aspect-square lg:aspect-[3/4] overflow-hidden rounded-lg 
+                    /* Subtle shadow for lift */
+                    shadow-[0_10px_30px_rgba(0,0,0,0.5),_0_0_15px_rgba(255,255,255,0.05)] 
+                    transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(0,0,0,0.7),_0_0_25px_rgba(255,255,255,0.1)]"
+        >
           <img
             src="/professional-portrait-of-nutrition-scientist-in-la.jpg"
             alt="Dr. Sarah Chen, Chief Curator"
