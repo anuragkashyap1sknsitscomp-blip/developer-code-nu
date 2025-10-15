@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
 
 export function Footer() {
@@ -9,12 +12,21 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand Info */}
           <div className="space-y-5">
-            <h3 className="font-serif text-3xl mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-              Code Nutrition
-            </h3>
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/images/logo02.jpeg"
+                alt="Code Nutrition Logo"
+                width={150}
+                height={60}
+                className="object-contain"
+                priority
+              />
+            </Link>
+
             <p className="text-sm text-gray-400 leading-relaxed">
               Curated supplements backed by science, tested for purity, and selected for efficacy.
             </p>
+
             <div className="flex gap-5 mt-6">
               <Link href="#" className="hover:text-gray-200 transition-colors">
                 <Facebook className="w-5 h-5" />
