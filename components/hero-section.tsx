@@ -98,7 +98,7 @@ export function HeroSection() {
   href="#featured"
   className="inline-block mt-3 md:mt-5 px-6 sm:px-8 py-2 text-xs sm:text-sm bg-white text-black font-bold uppercase tracking-wider rounded-full shadow-xl shadow-white/20 transition-all duration-300 transform hover:scale-[1.03]"
 >
-  Shop Collection
+  Our Store
 </a>
 
           </div>
@@ -132,10 +132,10 @@ export function HeroSection() {
         className="w-full bg-black text-white py-20 px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col items-center border-t border-gray-800"
       >
         <h2 className="text-3xl md:text-4xl font-sans font-bold mb-3 text-center tracking-tight">
-          Shop by Focus
+          Wellness Oriented
         </h2>
         <p className="text-gray-400 mb-12 text-base">
-          Find supplements curated for your specific health goals.
+          Find the right supplement for what your body needs most.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-7xl mx-auto">
@@ -176,8 +176,8 @@ export function HeroSection() {
           ))}
         </div>
 
-        <button className="mt-12 px-8 py-3 text-sm font-semibold uppercase tracking-widest border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 shadow-md hover:shadow-white/20">
-          View Complete Catalog
+        <button className="mt-8 px-6 py-2 text-sm font-semibold uppercase tracking-widest border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 shadow-md hover:shadow-white/20">
+          View More
         </button>
       </section>
 
