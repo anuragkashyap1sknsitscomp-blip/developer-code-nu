@@ -61,7 +61,8 @@ export function HeroSection() {
   return (
     <>
       {/* HERO SECTION WITH BACKGROUND VIDEO */}
-      <section className="relative flex items-start justify-center w-full min-h-[90vh] lg:min-h-[85vh] bg-black text-white pt-20 overflow-hidden">
+      {/* 🟢 CHANGE 1: items-start changed to items-center for vertical centering */}
+      <section className="relative flex items-center justify-center w-full min-h-[90vh] lg:min-h-[85vh] bg-black text-white pt-20 overflow-hidden">
         {/* 🔹 Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover z-0 opacity-60"
@@ -78,7 +79,8 @@ export function HeroSection() {
         {/* MAIN HERO CONTENT */}
         <div
           ref={heroRef}
-          className="flex flex-col lg:flex-row items-center justify-between w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-10 lg:py-16 transition-opacity duration-300 will-change-transform z-[2]"
+          // 🟢 CHANGE 2: Increased lg:py-16 to lg:py-20 for better visual vertical balance
+          className="flex flex-col lg:flex-row items-center justify-between w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-10 lg:py-20 transition-opacity duration-300 will-change-transform z-[2]"
         >
           {/* Text Section */}
           <div className="w-full lg:w-[50%] text-center lg:text-left space-y-3 md:space-y-4 lg:space-y-6 order-2 lg:order-1 pt-4 lg:pt-0">
@@ -124,7 +126,7 @@ export function HeroSection() {
         </div>
       </section>
 
-      {/* CATEGORY TILES SECTION */}
+      {/* CATEGORY TILES SECTION (No changes needed, already centered) */}
 <section
   id="featured"
   className="w-full bg-black text-white py-20 px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col items-center border-t border-gray-800"
