@@ -8,7 +8,7 @@ const heroImages =
   "/images/magenisum.png",
   "/images/vitamink2.png",
 ]
-
+ 
 const CATEGORY_TILES_DATA = [
   {
     title: "EAT",
