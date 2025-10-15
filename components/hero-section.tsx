@@ -4,11 +4,10 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
 const heroImages = [
- 
+  "/images/Omega3.png",
   "/images/vitamin12.png",
   "/images/magenisum.png",
   "/images/vitamink2.png",
-  
 ]
 
 const CATEGORY_TILES_DATA = [
@@ -84,7 +83,8 @@ export function HeroSection() {
           className="flex flex-col lg:flex-row items-center justify-between w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-10 lg:py-20 transition-opacity duration-300 will-change-transform z-[2]"
         >
           {/* Text Section */}
-          <div className="w-full lg:w-[50%] text-center lg:text-left space-y-3 md:space-y-4 lg:space-y-6 order-2 lg:order-1 pt-4 lg:pt-0">
+          <div className="w-full lg:w-[50%] text-center lg:text-left space-y-3 md:space-y-4 lg:space-y-6 pt-4 lg:pt-0">
+            {/* 🛠️ MODIFIED: Removed mobile order class (order-2) to make it first by default. Kept lg:order-1. */}
             <p className="text-white/70 uppercase tracking-[0.3em] text-xs sm:text-sm font-medium pl-4 inline-block">
               CURATED EXCELLENCE,
             </p>
@@ -95,17 +95,13 @@ export function HeroSection() {
                 your every day
               </span> */}
             </h1>
-            <a
-  href="#featured"
-  className="inline-block mt-3 md:mt-5 px-6 sm:px-8 py-2 text-xs sm:text-sm bg-white text-black font-bold uppercase tracking-wider rounded-full shadow-xl shadow-white/20 transition-all duration-300 transform hover:scale-[1.03]"
->
-  Our Store
-</a>
+            
 
           </div>
 
           {/* Product Image Section */}
-          <div className="relative w-full lg:w-[50%] flex items-center justify-center mt-8 sm:mt-10 lg:mt-0 order-1 lg:order-2">
+          <div className="relative w-full lg:w-[50%] flex items-center justify-center mt-8 sm:mt-10 lg:mt-0 lg:order-2">
+            {/* 🛠️ MODIFIED: Removed mobile order class (order-1) to make it second by default. Kept lg:order-2. */}
             <div className="relative w-full max-w-[280px] sm:max-w-sm lg:max-w-md aspect-square overflow-hidden">
               {heroImages.map((src, index) => {
                 const isActive = index === currentIndex
@@ -203,9 +199,9 @@ export function CuratorSection() {
         <div
           // UPDATED: Border radius reduced from rounded-xl to rounded-lg
           className="relative w-full aspect-[4/3] sm:aspect-square lg:aspect-[3/4] overflow-hidden rounded-lg 
-                    /* Subtle shadow for lift */
-                    shadow-[0_10px_30px_rgba(0,0,0,0.5),_0_0_15px_rgba(255,255,255,0.05)] 
-                    transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(0,0,0,0.7),_0_0_25px_rgba(255,255,255,0.1)]"
+            /* Subtle shadow for lift */
+            shadow-[0_10px_30px_rgba(0,0,0,0.5),_0_0_15px_rgba(255,255,255,0.05)] 
+            transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(0,0,0,0.7),_0_0_25px_rgba(255,255,255,0.1)]"
         >
           <img
             src="/professional-portrait-of-nutrition-scientist-in-la.jpg"
