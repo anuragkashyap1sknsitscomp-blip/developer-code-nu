@@ -14,22 +14,22 @@ const CATEGORY_TILES_DATA = [
   {
     title: "EAT",
     link: "/shop/eat",
-    imgUrl: "/professional-portrait-of-nutrition-scientist-in-la.jpg",
+    imgUrl: "images/eat.webp",
   },
   {
     title: "MOVE",
     link: "/shop/move",
-    imgUrl: "https://www.shutterstock.com/image-photo/portrait-handsome-male-doctor-stethoscope-600nw-2480850611.jpg",
+    imgUrl: "images/move.webp",
   },
   {
     title: "MIND",
     link: "/shop/mind",
-    imgUrl: "https://thumbs.dreamstime.com/b/indian-doctor-mature-male-medical-standing-inside-hospital-handsome-model-portrait-46325210.jpg",
+    imgUrl: "images/mind.webp",
   },
   {
     title: "SLEEP",
     link: "/shop/sleep",
-    imgUrl: "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg",
+    imgUrl: "images/sleep.webp",
   },
 ]
 
