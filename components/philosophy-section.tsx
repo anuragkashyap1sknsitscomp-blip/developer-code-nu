@@ -1,37 +1,40 @@
 "use client";
-import "./QualityCommitmentSection.css"; // Note: Changed CSS file name
+// NOTE: I've updated the imported CSS name to match the new component name for clarity
+import "./QualityCommitmentSection.css"; 
 
 export function QualityCommitmentSection() {
   const steps = [
     {
       id: "01",
-      title: "Curation & Selection",
-      desc: "We rigorously vet all potential suppliers, partnering only with manufacturers who hold top-tier GMP and regulatory certifications.",
-      // You'll need to update these image paths to reflect the new content
-      img: "/images/selection.png", 
+      title: "Vetting & Selection",
+      desc: "We rigorously evaluate manufacturers, partnering only with those holding top-tier GMP and recognized international regulatory certifications.",
+      // You can keep your existing image paths if they represent 'vetting', 'verification', and 'logistics'
+      img: "/images/philosophy/selection.jpg", 
     },
     {
       id: "02",
       title: "Quality Verification",
-      desc: "We confirm that every product batch has current, valid third-party test results for purity, potency, and safety, guaranteeing authenticity.",
-      img: "/images/verification.png", 
+      desc: "Every product batch must pass our internal quality checks and be accompanied by validated Certificates of Analysis (COA) for purity and potency.",
+      img: "/images/philosophy/verification.jpg", 
     },
     {
       id: "03",
-      title: "Safe Distribution",
-      desc: "Our handling and storage meet strict protocols to preserve product integrity, ensuring the medicine reaches you safely and effectively.",
-      img: "/images/shipping.png", 
+      title: "Secure Logistics",
+      desc: "Products are stored and shipped under strict environmental control (e.g., cold chain) to maintain their integrity and effectiveness until they reach your hands.",
+      img: "/images/philosophy/logistics.jpg", 
     },
   ];
 
   return (
     <section className="relative w-full bg-black text-white py-16 px-6">
       <div className="max-w-6xl mx-auto text-center">
+        {/* UPDATED MAIN HEADING */}
         <h2 className="font-serif text-4xl sm:text-5xl font-bold mb-6">
-          Our Quality Commitment
+          Our Quality Assurance
         </h2>
+        {/* UPDATED SUB-DESCRIPTION */}
         <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-12">
-          As a seller, our process focuses on strict vetting, verification, and careful distribution to ensure you receive only the best.
+          As your trusted distributor, we focus on a rigorous multi-step process for sourcing, verifying, and carefully delivering every medicine.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -43,8 +46,7 @@ export function QualityCommitmentSection() {
                   <img
                     src={step.img}
                     alt={step.title}
-                    // This class makes the image cover the card
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 {/* Back */}
