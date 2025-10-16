@@ -3,6 +3,15 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
+// Note: To use DM Serif Display and DM Sans with Tailwind, you would typically 
+// configure them in your tailwind.config.js as custom font families (e.g., font-serif-display and font-sans-body).
+// Since I cannot modify that file, I will use inline styles to target the specific fonts.
+
+// DM Serif Display for the bold, high-contrast look of the main title.
+const FONT_TITLE = { fontFamily: "'DM Serif Display', serif" };
+// DM Sans for the clean, legible, professional look of the small, uppercase text and body.
+const FONT_SANS = { fontFamily: "'DM Sans', sans-serif" };
+
 const heroImages = [
   
   "/images/vitamin12.png",
@@ -61,7 +70,6 @@ export function HeroSection() {
   return (
     <>
       {/* HERO SECTION WITH BACKGROUND VIDEO */}
-      {/* 🟢 CHANGE 1: items-start changed to items-center for vertical centering */}
       <section className="relative flex items-center justify-center w-full min-h-[90vh] lg:min-h-[85vh] bg-black text-white pt-20 overflow-hidden">
         {/* 🔹 Background Video */}
         <video
@@ -79,29 +87,30 @@ export function HeroSection() {
         {/* MAIN HERO CONTENT */}
         <div
           ref={heroRef}
-          // 🟢 CHANGE 2: Increased lg:py-16 to lg:py-20 for better visual vertical balance
           className="flex flex-col lg:flex-row items-center justify-between w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-10 lg:py-20 transition-opacity duration-300 will-change-transform z-[2]"
         >
           {/* Text Section */}
           <div className="w-full lg:w-[50%] text-center lg:text-left space-y-3 md:space-y-4 lg:space-y-6 pt-4 lg:pt-0">
-            {/* 🛠️ MODIFIED: Removed mobile order class (order-2) to make it first by default. Kept lg:order-1. */}
-            <p className="text-white/70 uppercase tracking-[0.3em] text-xs sm:text-sm font-medium pl-4 inline-block">
+            {/* CURATED EXCELLENCE - Using DM Sans style */}
+            <p 
+              className="text-white/70 uppercase tracking-[0.3em] text-xs sm:text-sm font-medium pl-4 inline-block"
+              style={FONT_SANS}
+            >
               CURATED EXCELLENCE,
             </p>
-            <h1 className="text-4xl sm:text-4xl md:text-5xl font-sans leading-tight tracking-tighter">
+            {/* Supplements Without Compromise - Using DM Serif Display style, now larger (md:text-6xl, lg:text-7xl) */}
+            <h1 
+              className="text-white text-5xl md:text-6xl lg:text-7xl font-serif leading-tight"
+              style={FONT_TITLE}
+            >
               <span className="block text-white"></span>
-              <span className="block text-white mb-2">Supplements Without Compromise</span>
-              {/* <span className="inline-block text-white font-serif italic text-5xl sm:text-6xl md:text-7xl font-light">
-                your every day
-              </span> */}
+              <span className="block text-white mb-2">Supplements <br /> Without <br /> Compromise</span>
             </h1>
             
-
           </div>
 
           {/* Product Image Section */}
           <div className="relative w-full lg:w-[50%] flex items-center justify-center mt-8 sm:mt-10 lg:mt-0 lg:order-2">
-            {/* 🛠️ MODIFIED: Removed mobile order class (order-1) to make it second by default. Kept lg:order-2. */}
             <div className="relative w-full max-w-[280px] sm:max-w-sm lg:max-w-md aspect-square overflow-hidden">
               {heroImages.map((src, index) => {
                 const isActive = index === currentIndex
@@ -123,15 +132,15 @@ export function HeroSection() {
         </div>
       </section>
 
-      {/* CATEGORY TILES SECTION (No changes needed, already centered) */}
+      {/* CATEGORY TILES SECTION */}
       <section
         id="featured"
         className="w-full bg-black text-white py-20 px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col items-center border-t border-gray-800"
       >
-        <h2 className="text-3xl md:text-4xl font-sans font-bold mb-3 text-center tracking-tight">
+        <h2 className="text-3xl md:text-4xl font-sans font-bold mb-3 text-center tracking-tight" style={FONT_SANS}>
           Wellness Oriented
         </h2>
-        <p className="text-gray-400 mb-12 text-base">
+        <p className="text-gray-400 mb-12 text-base" style={FONT_SANS}>
           Find the right supplement for what your body needs most.
         </p>
 
@@ -144,7 +153,6 @@ export function HeroSection() {
                 // 👇 For now this does nothing — but you can trigger a modal or toast here later
                 console.log(`${tile.title} clicked`)
               }}
-              // EDITED: Border radius changed from rounded-xl to rounded-lg
               className="group relative aspect-[3/4] overflow-hidden rounded-lg shadow-xl transition-transform duration-300 ease-in-out hover:scale-[1.03] cursor-pointer"
               style={{
                 backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 60%), url(${tile.imgUrl})`,
@@ -153,7 +161,7 @@ export function HeroSection() {
               }}
             >
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 flex justify-between items-center z-10">
-                <h3 className="text-2xl sm:text-3xl font-bold uppercase tracking-widest text-white">
+                <h3 className="text-2xl sm:text-3xl font-bold uppercase tracking-widest text-white" style={FONT_SANS}>
                   {tile.title}
                 </h3>
                 <div className="p-2 border border-white rounded-full transition-colors duration-300 group-hover:bg-white group-hover:text-black">
@@ -173,7 +181,10 @@ export function HeroSection() {
           ))}
         </div>
 
-        <button className="mt-8 px-6 py-2 text-sm font-semibold uppercase tracking-widest border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 shadow-md hover:shadow-white/20">
+        <button 
+          className="mt-8 px-6 py-2 text-sm font-semibold uppercase tracking-widest border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 shadow-md hover:shadow-white/20"
+          style={FONT_SANS}
+        >
           View More
         </button>
       </section>
@@ -184,20 +195,17 @@ export function HeroSection() {
 
 export function CuratorSection() {
   // Define colors for the monochrome dark theme consistency
-  // UPDATED: Changed background color to pure black (bg-black)
   const BG_DARK = "bg-black";
   const TEXT_MUTED = "text-gray-400";
   const TEXT_SUBTLE_ACCENT = "text-gray-200"; // Used for small accents
   const BORDER_COLOR = "border-gray-700";
 
   return (
-    // UPDATED: Uses bg-black and vertical padding reduced from py-28/py-36 to py-16
     <section className={`relative w-full ${BG_DARK} text-white py-16 px-6`}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
         {/* Image Column */}
         <div
-          // UPDATED: Border radius reduced from rounded-xl to rounded-lg
           className="relative w-full aspect-[4/3] sm:aspect-square lg:aspect-[3/4] overflow-hidden rounded-lg 
             /* Subtle shadow for lift */
             shadow-[0_10px_30px_rgba(0,0,0,0.5),_0_0_15px_rgba(255,255,255,0.05)] 
@@ -214,15 +222,22 @@ export function CuratorSection() {
         <div className="space-y-8 sm:space-y-10">
 
           {/* Header */}
-          <p className={`text-sm tracking-[0.3em] uppercase ${TEXT_SUBTLE_ACCENT} font-medium pb-2 border-b ${BORDER_COLOR} inline-block`}>
+          <p 
+            className={`text-sm tracking-[0.3em] uppercase ${TEXT_SUBTLE_ACCENT} font-medium pb-2 border-b ${BORDER_COLOR} inline-block`}
+            style={FONT_SANS}
+          >
             Chief Scientific Officer
           </p>
 
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+          {/* Meet Dr. Sarah Chen - Using DM Serif Display style */}
+          <h2 
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight"
+            style={FONT_TITLE}
+          >
             Meet Dr. Sarah Chen
           </h2>
 
-          <div className="space-y-8 text-gray-300 leading-relaxed pt-2">
+          <div className="space-y-8 text-gray-300 leading-relaxed pt-2" style={FONT_SANS}>
 
             {/* Quote Section with monochrome styling */}
             <p className={`text-xl sm:text-2xl font-light italic text-white/90 border-l-4 border-gray-500 pl-4 sm:pl-6 py-1`}>
@@ -246,20 +261,17 @@ export function CuratorSection() {
 
           {/* Credentials Section with separator */}
           <div className={`pt-10 border-t ${BORDER_COLOR}`}>
-            <p className={`text-sm ${TEXT_MUTED} mb-4 uppercase tracking-[0.2em]`}>Key Credentials</p>
-            <ul className="space-y-3 text-sm text-gray-200">
+            <p className={`text-sm ${TEXT_MUTED} mb-4 uppercase tracking-[0.2em]`} style={FONT_SANS}>Key Credentials</p>
+            <ul className="space-y-3 text-sm text-gray-200" style={FONT_SANS}>
               <li className="flex items-center">
-                {/* REVISED: Used a gray diamond for the bullet point */}
                 <span className={`${TEXT_MUTED} mr-3 text-lg leading-none`}>♦</span>
                 PhD, Nutritional Biochemistry - **Stanford University**
               </li>
               <li className="flex items-center">
-                {/* REVISED: Used a gray diamond for the bullet point */}
                 <span className={`${TEXT_MUTED} mr-3 text-lg leading-none`}>♦</span>
                 Board Certified Nutrition Specialist (CNS)
               </li>
               <li className="flex items-center">
-                {/* REVISED: Used a gray diamond for the bullet point */}
                 <span className={`${TEXT_MUTED} mr-3 text-lg leading-none`}>♦</span>
                 Former Research Director, NIH Supplement Studies
               </li>
