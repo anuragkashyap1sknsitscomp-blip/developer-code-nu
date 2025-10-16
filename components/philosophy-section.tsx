@@ -8,7 +8,7 @@ export function PhilosophySection() {
       title: "Supplier Vetting",
       desc: "We partner only with manufacturers holding top-tier GMP and regulatory approvals, ensuring strict quality at the source.",
       // Keep your existing image path
-      img: "/images/manufacture.png", 
+      img: "/images/making.png", 
     },
     {
       id: "02",
