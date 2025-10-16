@@ -13,10 +13,10 @@ const FONT_TITLE = { fontFamily: "'DM Serif Display', serif" };
 const FONT_SANS = { fontFamily: "'DM Sans', sans-serif" };
 
 const heroImages = [
-  
-  "/images/vitamin12.png",
-  "/images/magenisum.png",
-  "/images/vitamink2.png",
+
+  "/images/vitamin12.png", "/images/med1.png",
+  "/images/magenisum.png", "/images/med2.png",
+  "/images/vitamink2.png", "/images/med3.png",
 ]
 
 const CATEGORY_TILES_DATA = [
@@ -92,21 +92,21 @@ export function HeroSection() {
           {/* Text Section */}
           <div className="w-full lg:w-[50%] text-center lg:text-left space-y-3 md:space-y-4 lg:space-y-6 pt-4 lg:pt-0">
             {/* CURATED EXCELLENCE - Using DM Sans style */}
-            <p 
+            <p
               className="text-white/70 uppercase tracking-[0.3em] text-xs sm:text-sm font-medium pl-4 inline-block"
               style={FONT_SANS}
             >
               CURATED EXCELLENCE,
             </p>
             {/* Supplements Without Compromise - Using DM Serif Display style, now larger (md:text-6xl, lg:text-7xl) */}
-            <h1 
+            <h1
               className="text-white text-5xl md:text-6xl lg:text-7xl font-serif leading-tight"
               style={FONT_TITLE}
             >
               <span className="block text-white"></span>
               <span className="block text-white mb-2">Supplements <br /> Without <br /> Compromise</span>
             </h1>
-            
+
           </div>
 
           {/* Product Image Section */}
@@ -135,12 +135,14 @@ export function HeroSection() {
       {/* CATEGORY TILES SECTION */}
       <section
         id="featured"
-        className="w-full bg-black text-white py-20 px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col items-center border-t border-gray-800"
+        className="w-full bg-white text-black py-20 px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col items-center border-t border-gray-800"
       >
-        <h2 className="text-3xl md:text-4xl font-sans font-bold mb-3 text-center tracking-tight" style={FONT_SANS}>
+
+        <h2 className="font-serif text-5xl md:text-6xl mb-5 text-balance">
           Wellness Oriented
         </h2>
-        <p className="text-gray-400 mb-12 text-base" style={FONT_SANS}>
+
+        <p className="text-gray-600 mb-12 text-base" style={FONT_SANS}>
           Find the right supplement for what your body needs most.
         </p>
 
@@ -181,8 +183,8 @@ export function HeroSection() {
           ))}
         </div>
 
-        <button 
-          className="mt-8 px-6 py-2 text-sm font-semibold uppercase tracking-widest border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 shadow-md hover:shadow-white/20"
+        <button
+          className="mt-8 px-6 cursor-pointer py-2 text-sm font-semibold uppercase tracking-widest border-2 border-black text-black rounded-full hover:bg-black hover:text-white transition-colors duration-300 shadow-md hover:shadow-white/20"
           style={FONT_SANS}
         >
           View More
@@ -191,94 +193,4 @@ export function HeroSection() {
 
     </>
   )
-}
-
-export function CuratorSection() {
-  // Define colors for the monochrome dark theme consistency
-  const BG_DARK = "bg-black";
-  const TEXT_MUTED = "text-gray-400";
-  const TEXT_SUBTLE_ACCENT = "text-gray-200"; // Used for small accents
-  const BORDER_COLOR = "border-gray-700";
-
-  return (
-    <section className={`relative w-full ${BG_DARK} text-white py-16 px-6`}>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-
-        {/* Image Column */}
-        <div
-          className="relative w-full aspect-[4/3] sm:aspect-square lg:aspect-[3/4] overflow-hidden rounded-lg 
-            /* Subtle shadow for lift */
-            shadow-[0_10px_30px_rgba(0,0,0,0.5),_0_0_15px_rgba(255,255,255,0.05)] 
-            transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(0,0,0,0.7),_0_0_25px_rgba(255,255,255,0.1)]"
-        >
-          <img
-            src="/professional-portrait-of-nutrition-scientist-in-la.jpg"
-            alt="Dr. Sarah Chen, Chief Curator"
-            className="w-full h-full object-cover object-top"
-          />
-        </div>
-
-        {/* Content Column */}
-        <div className="space-y-8 sm:space-y-10">
-
-          {/* Header */}
-          <p 
-            className={`text-sm tracking-[0.3em] uppercase ${TEXT_SUBTLE_ACCENT} font-medium pb-2 border-b ${BORDER_COLOR} inline-block`}
-            style={FONT_SANS}
-          >
-            Chief Scientific Officer
-          </p>
-
-          {/* Meet Dr. Sarah Chen - Using DM Serif Display style */}
-          <h2 
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight"
-            style={FONT_TITLE}
-          >
-            Meet Dr. Sarah Chen
-          </h2>
-
-          <div className="space-y-8 text-gray-300 leading-relaxed pt-2" style={FONT_SANS}>
-
-            {/* Quote Section with monochrome styling */}
-            <p className={`text-xl sm:text-2xl font-light italic text-white/90 border-l-4 border-gray-500 pl-4 sm:pl-6 py-1`}>
-              "Our mission is to **cut through the noise** of the supplement industry. Too many products make bold claims
-              without the science to back them up."
-            </p>
-
-            {/* Main Text Block 1 */}
-            <p className="text-base sm:text-lg">
-              With over **15 years in nutritional biochemistry** and a **PhD from Stanford**, I've dedicated my career to
-              identifying supplements that actually work. Every product in our collection has been personally vetted for
-              efficacy, purity, and bioavailability.
-            </p>
-
-            {/* Main Text Block 2 (Subtle text, professional voice) */}
-            <p className="text-sm sm:text-base text-gray-400">
-              We uphold the highest standard of verification. Our process involves reviewing third-party testing, analyzing
-              primary research literature, and ensuring manufacturing integrity. **If it doesn't meet our rigorous standards, it doesn't make the cut.**
-            </p>
-          </div>
-
-          {/* Credentials Section with separator */}
-          <div className={`pt-10 border-t ${BORDER_COLOR}`}>
-            <p className={`text-sm ${TEXT_MUTED} mb-4 uppercase tracking-[0.2em]`} style={FONT_SANS}>Key Credentials</p>
-            <ul className="space-y-3 text-sm text-gray-200" style={FONT_SANS}>
-              <li className="flex items-center">
-                <span className={`${TEXT_MUTED} mr-3 text-lg leading-none`}>♦</span>
-                PhD, Nutritional Biochemistry - **Stanford University**
-              </li>
-              <li className="flex items-center">
-                <span className={`${TEXT_MUTED} mr-3 text-lg leading-none`}>♦</span>
-                Board Certified Nutrition Specialist (CNS)
-              </li>
-              <li className="flex items-center">
-                <span className={`${TEXT_MUTED} mr-3 text-lg leading-none`}>♦</span>
-                Former Research Director, NIH Supplement Studies
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
 }
