@@ -1,25 +1,26 @@
 "use client";
-import "./PhilosophySection.css"; // We'll create this CSS file
+import "./QualityCommitmentSection.css"; // Note: Changed CSS file name
 
-export function PhilosophySection() {
+export function QualityCommitmentSection() {
   const steps = [
     {
       id: "01",
-      title: "Manufacture",
-      desc: "Medicines are carefully manufactured using high-quality ingredients under strict GMP standards to ensure safety and efficacy.",
-      img: "/images/making.png",
+      title: "Curation & Selection",
+      desc: "We rigorously vet all potential suppliers, partnering only with manufacturers who hold top-tier GMP and regulatory certifications.",
+      // You'll need to update these image paths to reflect the new content
+      img: "/images/selection.png", 
     },
     {
       id: "02",
-      title: "Testing",
-      desc: "Each batch undergoes rigorous third-party testing to guarantee purity, potency, and safety for our consumers.",
-      img: "/images/testing.png",
+      title: "Quality Verification",
+      desc: "We confirm that every product batch has current, valid third-party test results for purity, potency, and safety, guaranteeing authenticity.",
+      img: "/images/verification.png", 
     },
     {
       id: "03",
-      title: "Approval",
-      desc: "Products are reviewed and approved by experts, ensuring they meet all regulatory and quality standards before reaching the market.",
-      img: "/images/approval.png",
+      title: "Safe Distribution",
+      desc: "Our handling and storage meet strict protocols to preserve product integrity, ensuring the medicine reaches you safely and effectively.",
+      img: "/images/shipping.png", 
     },
   ];
 
@@ -27,10 +28,10 @@ export function PhilosophySection() {
     <section className="relative w-full bg-black text-white py-16 px-6">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="font-serif text-4xl sm:text-5xl font-bold mb-6">
-          Our Medicine Process
+          Our Quality Commitment
         </h2>
         <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-12">
-          Every medicine we produce goes through a strict process to ensure quality, safety, and effectiveness.
+          As a seller, our process focuses on strict vetting, verification, and careful distribution to ensure you receive only the best.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -42,7 +43,8 @@ export function PhilosophySection() {
                   <img
                     src={step.img}
                     alt={step.title}
-                    className="w-full h-full object-cover"
+                    // This class makes the image cover the card
+                    className="w-full h-full object-cover" 
                   />
                 </div>
                 {/* Back */}
