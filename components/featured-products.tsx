@@ -205,7 +205,7 @@ export function FeaturedProducts() {
           Meet Our Experts
         </h2>
         <p className="text-gray-500 mb-12 text-lg text-center max-w-3xl mx-auto">
-          Explore personalized insights and strategies guided by our {DOCTOR_CARDS_DATA.length} leading specialists.
+          Explore personalized insights and strategies guided by our leading specialists.
         </p>
       </div>
 
