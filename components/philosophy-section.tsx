@@ -1,26 +1,28 @@
 "use client";
-import "./PhilosophySection.css"; // CSS path is kept as PhilosophySection.css
+import "./PhilosophySection.css"; // We'll create this CSS file
 
 export function PhilosophySection() {
   const steps = [
     {
       id: "01",
-      title: "Vetting & Selection",
-      desc: "Hum kewal unhi manufacturers ke saath partnership karte hain jinke paas GMP aur manyata prapt regulatory certifications hain.",
-      // Apne hisaab se images ka path update kar lein jo 'selection' ko darshaye.
-      img: "/images/philosophy/selection.jpg", 
+      title: "Supplier Vetting",
+      desc: "We partner only with manufacturers holding top-tier GMP and regulatory approvals, ensuring strict quality at the source.",
+      // Keep your existing image path
+      img: "/images/manufacture.png", 
     },
     {
       id: "02",
       title: "Quality Verification",
-      desc: "Har batch ki jaanch Certificates of Analysis (COA) se ki jaati hai taaki shuddhta, shakti, aur niyamo ka palan sunishchit ho.",
-      img: "/images/philosophy/verification.jpg", 
+      desc: "Every batch is verified against Certificates of Analysis (COA) to guarantee its purity, potency, and safety before we accept it.",
+      // Keep your existing image path
+      img: "/images/testing.png", 
     },
     {
       id: "03",
-      title: "Surakshit Vitran (Logistics)",
-      desc: "Dawaon ko unki prabhavsheelta banaye rakhne ke liye nirdharit tapmaan aur suraksha niyamo ke tahat store aur deliver kiya jaata hai.",
-      img: "/images/philosophy/logistics.jpg", 
+      title: "Secure Logistics",
+      desc: "Products are stored and shipped under precise temperature and security protocols to preserve integrity until delivery.",
+      // Keep your existing image path
+      img: "/images/approval.png", 
     },
   ];
 
@@ -29,11 +31,11 @@ export function PhilosophySection() {
       <div className="max-w-6xl mx-auto text-center">
         {/* UPDATED MAIN HEADING */}
         <h2 className="font-serif text-4xl sm:text-5xl font-bold mb-6">
-          Hamara Gunvatta Aashwasan
+          Our Quality Commitment
         </h2>
         {/* UPDATED SUB-DESCRIPTION */}
         <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-12">
-          Ek vikreta ke roop mein, hamara lakshya har dawa ko kadak chayan, satyapan, aur surakshit handling ke madhyam se aap tak pahunchana hai.
+          As a trusted seller, our process ensures the quality, safety, and effectiveness of every product we deliver.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
