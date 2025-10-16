@@ -5,37 +5,32 @@ export function PhilosophySection() {
   const steps = [
     {
       id: "01",
-      title: "Supplier Vetting",
-      desc: "We partner only with manufacturers holding top-tier GMP and regulatory approvals, ensuring strict quality at the source.",
-      // Keep your existing image path
-      img: "/images/making.png", 
+      title: "Scientific Backing",
+      desc: "Peer-reviewed research and clinical studies validate every ingredient.",
+      img: "/images/Backing.png",
     },
     {
       id: "02",
-      title: "Quality Verification",
-      desc: "Every batch is verified against Certificates of Analysis (COA) to guarantee its purity, potency, and safety before we accept it.",
-      // Keep your existing image path
-      img: "/images/testing.png", 
+      title: "Third-Party Tested",
+      desc: "Independent verification ensures purity and potency claims.",
+      img: "/images/testing.png",
     },
     {
       id: "03",
-      title: "Secure Logistics",
-      desc: "Products are stored and shipped under precise temperature and security protocols to preserve integrity until delivery.",
-      // Keep your existing image path
-      img: "/images/approval.png", 
+      title: "Premium Sourcing",
+      desc: "Traceable ingredients from sustainable, ethical suppliers.",
+      img: "/images/Premium.png",
     },
   ];
 
   return (
     <section className="relative w-full bg-black text-white py-16 px-6">
       <div className="max-w-6xl mx-auto text-center">
-        {/* UPDATED MAIN HEADING */}
         <h2 className="font-serif text-4xl sm:text-5xl font-bold mb-6">
-          Our Quality Commitment
+          Our Curation Process
         </h2>
-        {/* UPDATED SUB-DESCRIPTION */}
         <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-12">
-          As a trusted seller, our process ensures the quality, safety, and effectiveness of every product we deliver.
+          Every supplement in our collection undergoes rigorous evaluation. We examine bioavailability, third-party testing, ingredient sourcing, and manufacturing standards. Only the exceptional make it through.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
