@@ -1,26 +1,25 @@
 "use client";
-// NOTE: I've updated the imported CSS name to match the new component name for clarity
-import "./QualityCommitmentSection.css"; 
+import "./PhilosophySection.css"; // CSS path is kept as PhilosophySection.css
 
-export function QualityCommitmentSection() {
+export function PhilosophySection() {
   const steps = [
     {
       id: "01",
       title: "Vetting & Selection",
-      desc: "We rigorously evaluate manufacturers, partnering only with those holding top-tier GMP and recognized international regulatory certifications.",
-      // You can keep your existing image paths if they represent 'vetting', 'verification', and 'logistics'
+      desc: "Hum kewal unhi manufacturers ke saath partnership karte hain jinke paas GMP aur manyata prapt regulatory certifications hain.",
+      // Apne hisaab se images ka path update kar lein jo 'selection' ko darshaye.
       img: "/images/philosophy/selection.jpg", 
     },
     {
       id: "02",
       title: "Quality Verification",
-      desc: "Every product batch must pass our internal quality checks and be accompanied by validated Certificates of Analysis (COA) for purity and potency.",
+      desc: "Har batch ki jaanch Certificates of Analysis (COA) se ki jaati hai taaki shuddhta, shakti, aur niyamo ka palan sunishchit ho.",
       img: "/images/philosophy/verification.jpg", 
     },
     {
       id: "03",
-      title: "Secure Logistics",
-      desc: "Products are stored and shipped under strict environmental control (e.g., cold chain) to maintain their integrity and effectiveness until they reach your hands.",
+      title: "Surakshit Vitran (Logistics)",
+      desc: "Dawaon ko unki prabhavsheelta banaye rakhne ke liye nirdharit tapmaan aur suraksha niyamo ke tahat store aur deliver kiya jaata hai.",
       img: "/images/philosophy/logistics.jpg", 
     },
   ];
@@ -30,11 +29,11 @@ export function QualityCommitmentSection() {
       <div className="max-w-6xl mx-auto text-center">
         {/* UPDATED MAIN HEADING */}
         <h2 className="font-serif text-4xl sm:text-5xl font-bold mb-6">
-          Our Quality Assurance
+          Hamara Gunvatta Aashwasan
         </h2>
         {/* UPDATED SUB-DESCRIPTION */}
         <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-12">
-          As your trusted distributor, we focus on a rigorous multi-step process for sourcing, verifying, and carefully delivering every medicine.
+          Ek vikreta ke roop mein, hamara lakshya har dawa ko kadak chayan, satyapan, aur surakshit handling ke madhyam se aap tak pahunchana hai.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
