@@ -2,7 +2,8 @@ import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
 import { PhilosophySection } from "@/components/philosophy-section"
 import { FeaturedProducts } from "@/components/featured-products"
-import { CuratorSection } from "@/components/curator-section"
+// import { CuratorSection } from "@/components/curator-section"
+import { ProductFeatureSection } from '@/components/ProductFeatureSection';
 import { Footer } from "@/components/footer"
 
 export default function HomePage() {
@@ -11,8 +12,9 @@ export default function HomePage() {
       <Navigation />
       <HeroSection />
       <PhilosophySection />
+      {/* <CuratorSection /> */}
+      <ProductFeatureSection/>
       <FeaturedProducts />
-      <CuratorSection />
       <Footer />
     </main>
   )
