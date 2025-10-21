@@ -155,7 +155,7 @@ export function Navigation() {
           <div className="flex-1 flex justify-center">
             <Link href="/" className="block shrink-0" onClick={closeMobileMenu}>
               <img
-                src="/images/mainlogo.jpeg" // Make sure you have a logo suitable for a white background
+                src="/mainlogo.jpeg" // Make sure you have a logo suitable for a white background
                 alt="Logo"
                 className="h-12 w-auto object-contain"
               />
