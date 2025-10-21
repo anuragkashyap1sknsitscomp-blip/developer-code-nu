@@ -3,13 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
-// Note: To use DM Serif Display and DM Sans with Tailwind, you would typically 
-// configure them in your tailwind.config.js as custom font families (e.g., font-serif-display and font-sans-body).
-// Since I cannot modify that file, I will use inline styles to target the specific fonts.
-
-// DM Serif Display for the bold, high-contrast look of the main title.
 const FONT_TITLE = { fontFamily: "'DM Serif Display', serif" };
-// DM Sans for the clean, legible, professional look of the small, uppercase text and body.
 const FONT_SANS = { fontFamily: "'DM Sans', sans-serif" };
 
 const heroImages = [
@@ -69,68 +63,7 @@ export function HeroSection() {
 
   return (
     <>
-      {/* HERO SECTION WITH BACKGROUND VIDEO */}
-      <section className="relative flex items-center justify-center w-full min-h-[90vh] lg:min-h-[85vh] bg-black text-white pt-20 overflow-hidden">
-        {/* 🔹 Background Video */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover z-0 opacity-60"
-          src="/bg_animation.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        ></video>
 
-        {/* Overlay tint */}
-        <div className="absolute inset-0 bg-black/40 z-[1]" />
-
-        {/* MAIN HERO CONTENT */}
-        <div
-          ref={heroRef}
-          className="flex flex-col lg:flex-row items-center justify-between w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-10 lg:py-20 transition-opacity duration-300 will-change-transform z-[2]"
-        >
-          {/* Text Section */}
-          <div className="w-full lg:w-[50%] text-center lg:text-left space-y-3 md:space-y-4 lg:space-y-6 pt-4 lg:pt-0">
-            {/* CURATED EXCELLENCE - Using DM Sans style */}
-            <p
-              className="text-white/70 uppercase tracking-[0.3em] text-xs sm:text-sm font-medium pl-4 inline-block"
-              style={FONT_SANS}
-            >
-              CURATED EXCELLENCE,
-            </p>
-            {/* Supplements Without Compromise - Using DM Serif Display style, now larger (md:text-6xl, lg:text-7xl) */}
-            <h1
-              className="text-white text-5xl md:text-6xl lg:text-7xl font-serif leading-tight"
-              style={FONT_TITLE}
-            >
-              <span className="block text-white"></span>
-              <span className="block text-white mb-2">Supplements <br /> Without <br /> Compromise</span>
-            </h1>
-
-          </div>
-
-          {/* Product Image Section */}
-          <div className="relative w-full lg:w-[50%] flex items-center justify-center mt-8 sm:mt-10 lg:mt-0 lg:order-2">
-            <div className="relative w-full max-w-[280px] sm:max-w-sm lg:max-w-md aspect-square overflow-hidden">
-              {heroImages.map((src, index) => {
-                const isActive = index === currentIndex
-                return (
-                  <Image
-                    key={index}
-                    src={src}
-                    alt={`Product Bottle ${index + 1}`}
-                    fill
-                    className={`object-contain absolute inset-0 transition-all duration-[1500ms] ease-in-out ${isActive ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0"
-                      }`}
-                    priority={index === 0}
-                    sizes="(max-width: 1024px) 70vw, 400px"
-                  />
-                )
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CATEGORY TILES SECTION */}
       <section
@@ -138,12 +71,8 @@ export function HeroSection() {
         className="w-full bg-white text-black py-20 px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col items-center border-t border-gray-800"
       >
 
-        <h2 className="font-serif text-5xl md:text-6xl mb-5 text-balance">
-          Wellness Oriented
-        </h2>
-
         <p className="text-gray-600 mb-12 text-base" style={FONT_SANS}>
-          Find the right supplement for what your body needs most.
+
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-7xl mx-auto">
