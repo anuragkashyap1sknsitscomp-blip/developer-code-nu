@@ -64,7 +64,8 @@ const useDelayedState = (initialValue: string | null, delay = 100) => {
 }
 
 export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
+  // 1. Removed isScrolled state since the effect is no longer needed.
+  // const [isScrolled, setIsScrolled] = useState(false) 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useDelayedState(null)
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(
@@ -74,7 +75,8 @@ export function Navigation() {
   const { getCartCount } = useCart()
   const cartCount = getCartCount()
 
-  // Effect for scrolling behavior of the nav bar
+  // 2. Removed the useEffect that handled the scroll behavior.
+  /*
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
@@ -82,6 +84,7 @@ export function Navigation() {
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+  */
 
   // Close mobile menu when a link is clicked
   const closeMobileMenu = () => setMobileMenuOpen(false)
@@ -94,11 +97,10 @@ export function Navigation() {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Main Navigation Bar */}
       <nav
-        className={`transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/90 backdrop-blur-lg shadow-md"
-            : "bg-white"
-        }`}
+        // 3. Simplified the className to enforce a solid white background and a consistent shadow.
+        // Removed: transition-all duration-300
+        // Replaced conditional class with: bg-white shadow-md
+        className="bg-white shadow-md"
       >
         <div className="max-w-screen-2xl mx-auto px-6 flex items-center justify-between h-20">
           {/* ====== Left Section: Nav Links (Desktop) / Menu Icon (Mobile) ====== */}
@@ -155,7 +157,7 @@ export function Navigation() {
           <div className="flex-1 flex justify-center">
             <Link href="/" className="block shrink-0" onClick={closeMobileMenu}>
               <img
-                src="/images/mainlogo.png" // Make sure you have a logo suitable for a white background
+                src="/mainlogo.jpeg" // Make sure you have a logo suitable for a white background
                 alt="Logo"
                 className="h-12 w-auto object-contain"
               />
