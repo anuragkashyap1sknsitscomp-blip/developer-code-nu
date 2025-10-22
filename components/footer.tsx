@@ -14,7 +14,7 @@ export function Footer() {
           <div className="space-y-5">
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/images/logo02.jpeg"
+                src="/images/logowhite.png"
                 alt="Code Nutrition Logo"
                 width={150}
                 height={60}
