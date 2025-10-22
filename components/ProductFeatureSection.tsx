@@ -48,11 +48,10 @@ function ProductCard({ product }) {
           <button
             onClick={handleAddToCart}
             disabled={isAdded}
-            className={`px-4 py-2 text-sm font-semibold rounded-lg border border-black transition-all duration-300 ${
-              isAdded
+            className={`px-4 py-2 text-sm font-semibold rounded-lg border border-black transition-all duration-300 ${isAdded
                 ? "bg-black text-white"
                 : "text-black bg-white hover:bg-black hover:text-white"
-            }`}
+              }`}
           >
             {isAdded ? "Added!" : "Add to Cart"}
           </button>
@@ -73,10 +72,9 @@ export function ProductFeatureSection() {
             Science First
           </p>
 
-          <h2 className="font-serif text-4xl sm:text-5xl font-extrabold leading-tight">
+          <h2 className="font-serif text-5xl md:text-6xl mb-5 text-balance">
             Curated Essentials.
           </h2>
-
           <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
             <p className="border-l-4 border-black pl-6 italic">
               "Verified purity and maximum impact, guaranteed."
